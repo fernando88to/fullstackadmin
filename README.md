@@ -15,3 +15,8 @@ Projeto de Estudo do material ui
 No visual studio code instala a extensão 'Taildwind shades', depois escreve uma cor, seleciona
 ela e faz na sequência os seguintes atalhos 'ctrl+k' e 'ctrl+g'.
 
+
+### Configuração da fonte
+
+https://nextjs.org/blog/next-13#nextfont
+
