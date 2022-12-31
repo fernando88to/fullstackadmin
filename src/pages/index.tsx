@@ -3,9 +3,16 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import theme from "../theme";
+import {useContext} from "react";
+import {ColorModeContext} from "../context/ColorModeContext";
 
 
 export default function About() {
+    const {toggleColorMode} = useContext(ColorModeContext);
+    const handleClick = () => {
+        toggleColorMode();
+    }
     return (
         <Container maxWidth="lg">
             <Box
@@ -24,6 +31,9 @@ export default function About() {
                     <h2>Teste</h2>
                     <Button variant="contained">
                         Go to the home page
+                    </Button>
+                    <Button variant="contained" onClick={handleClick}>
+                        Trocar tema
                     </Button>
                 </Box>
             </Box>
