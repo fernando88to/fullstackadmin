@@ -7,13 +7,11 @@ export const ColorModeContext = React.createContext({
     }
 });
 
-
 interface propsColorProviderWrapper {
     children: React.ReactNode
-
-
 }
-export const ColorProviderWrapper = (props:propsColorProviderWrapper) => {
+
+export const ColorProviderWrapper = (props: propsColorProviderWrapper) => {
     const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
     const colorMode = React.useMemo(
         () => ({
@@ -24,11 +22,7 @@ export const ColorProviderWrapper = (props:propsColorProviderWrapper) => {
         [],
     );
 
-    const theme = React.useMemo(
-        () =>
-            createTheme(themeSettings(mode)),
-        [mode],
-    );
+    const theme = React.useMemo(() => createTheme(themeSettings(mode)), [mode],);
 
     return (
         <ColorModeContext.Provider value={colorMode}>
