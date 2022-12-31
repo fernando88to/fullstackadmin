@@ -1,3 +1,8 @@
+import {createTheme, ThemeOptions} from '@mui/material/styles';
+import { Roboto, Inter } from '@next/font/google';
+import { red } from '@mui/material/colors';
+
+
 // color design tokens export
 interface ColorFamilies {
     0?: string,
@@ -85,6 +90,13 @@ function reverseTokens(tokensDark: TokenColor) : TokenColor {
 
 export const tokensLight: TokenColor = reverseTokens(tokensDark);
 
+
+export const fontInter = Inter({
+    weight: ['300', '400', '600', '700'],
+    subsets: ['latin'],
+    display: 'swap',
+    fallback: ['sans-serif'],
+});
 // mui theme settings
 export const themeSettings = (mode: string) => {
     return {
@@ -129,37 +141,74 @@ export const themeSettings = (mode: string) => {
                     },
                     background: {
                         default: tokensDark.grey[0],
-                        alt: tokensDark.grey[50],
+                        //alt: tokensDark.grey[50],
                     },
                 }),
         },
         typography: {
-            fontFamily: ["Inter", "sans-serif"].join(","),
+            fontFamily: fontInter.style.fontFamily,
             fontSize: 12,
             h1: {
-                fontFamily: ["Inter", "sans-serif"].join(","),
+                fontFamily: fontInter.style.fontFamily,
                 fontSize: 40,
             },
             h2: {
-                fontFamily: ["Inter", "sans-serif"].join(","),
+                fontFamily: fontInter.style.fontFamily,
                 fontSize: 32,
             },
             h3: {
-                fontFamily: ["Inter", "sans-serif"].join(","),
+                fontFamily: fontInter.style.fontFamily,
                 fontSize: 24,
             },
             h4: {
-                fontFamily: ["Inter", "sans-serif"].join(","),
+                fontFamily: fontInter.style.fontFamily,
                 fontSize: 20,
             },
             h5: {
-                fontFamily: ["Inter", "sans-serif"].join(","),
+                fontFamily: fontInter.style.fontFamily,
                 fontSize: 16,
             },
             h6: {
-                fontFamily: ["Inter", "sans-serif"].join(","),
+                fontFamily: fontInter.style.fontFamily,
                 fontSize: 14,
             },
         },
-    };
+    } as ThemeOptions;
 };
+
+
+/*export const roboto = Roboto({
+    weight: ['300', '400', '500', '700'],
+    subsets: ['latin'],
+    display: 'swap',
+    fallback: ['Helvetica', 'Arial', 'sans-serif'],
+});*/
+
+
+
+
+// Create a theme instance.
+// Create a theme instance.
+/*const themeOptions: ThemeOptions = {
+    palette: {
+        primary: {
+            main: '#556cd6',
+        },
+        secondary: {
+            main: '#19857b',
+        },
+        error: {
+            main: red.A400,
+        },
+    },
+    typography: {
+        fontFamily: roboto.style.fontFamily,
+    },
+}
+const theme = createTheme(themeOptions);*/
+
+
+const theme = createTheme(themeSettings('dark'));
+
+
+export default theme;

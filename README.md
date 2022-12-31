@@ -20,3 +20,7 @@ ela e faz na sequência os seguintes atalhos 'ctrl+k' e 'ctrl+g'.
 
 https://nextjs.org/blog/next-13#nextfont
 
+### Dependências do material ui
+
+
+npm i --save @emotion/cache @emotion/react @emotion/server @emotion/styled @mui/icons-material @mui/material
