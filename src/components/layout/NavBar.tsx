@@ -9,11 +9,13 @@ import React, {useContext} from "react";
 import {useTheme} from '@mui/material/styles';
 import {ColorModeContext} from "../../context/ColorModeContext";
 
-interface propsNavBar {
-    children: React.ReactNode
+interface INavBar {
+    // children: React.ReactNode
+    isOpenSideBar: boolean
+    toggleSideBar: any
 }
 
-const NavBar = () => {
+const NavBar = (props: INavBar) => {
     const theme = useTheme();
     const {toggleColorMode} = useContext(ColorModeContext);
 
