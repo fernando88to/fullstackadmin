@@ -17,19 +17,20 @@ const Layout = (props: propsLayout) => {
         noSsr: false
     });
     const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+    const widthNavBar = "250px";
 
     return (
-        <Box display={isMobile ? "block" : "flex"} width="100%" height="100%">
+        <Box display={isMobile ? "block" : "flex"} width="100vw" height="100vh" overflow="hidden">
+
+            <NavBar isOpenSideBar={isSideBarOpen}
+                    toggleSideBar={setIsSideBarOpen}
+                    widthNavBar={widthNavBar}/>
 
             <SideBar
                 isMobile={isMobile}
                 isOpenSideBar={isSideBarOpen}
-                toggleSideBar={setIsSideBarOpen}/>
-
-            <NavBar  isOpenSideBar={isSideBarOpen}
-                     toggleSideBar={setIsSideBarOpen} />
-
-
+                toggleSideBar={setIsSideBarOpen}
+                widthNavBar={widthNavBar}/>
 
 
             {props.children}

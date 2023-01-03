@@ -13,6 +13,7 @@ interface INavBar {
     // children: React.ReactNode
     isOpenSideBar: boolean
     toggleSideBar: any
+    widthNavBar:string
 }
 
 const NavBar = (props: INavBar) => {
@@ -26,9 +27,10 @@ const NavBar = (props: INavBar) => {
     return (
         <AppBar
             sx={{
-                position: "static",
+                position: "fixed",
                 background: "none",
-                boxShadow: "none"
+                boxShadow: "none",
+                paddingLeft:props.widthNavBar
             }}>
             <Toolbar sx={{
                 justifyContent: "space-between"
