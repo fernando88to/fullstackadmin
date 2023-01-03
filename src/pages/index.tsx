@@ -10,13 +10,11 @@ import {Layout} from "../components/layout";
 
 
 export default function About() {
-    const {toggleColorMode} = useContext(ColorModeContext);
-    const handleClick = () => {
-        toggleColorMode();
-    }
+
+
     return (
         <Layout>
-            <Button variant="contained" onClick={handleClick}>
+            <Button variant="contained" >
                 Trocar tema
             </Button>
         </Layout>

@@ -5,8 +5,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import React from "react";
+import React, {useContext} from "react";
 import {useTheme} from '@mui/material/styles';
+import {ColorModeContext} from "../../context/ColorModeContext";
 
 interface propsNavBar {
     children: React.ReactNode
@@ -14,6 +15,12 @@ interface propsNavBar {
 
 const NavBar = () => {
     const theme = useTheme();
+    const {toggleColorMode} = useContext(ColorModeContext);
+
+    const handlerTogleTheme = () => {
+        toggleColorMode();
+    }
+
     return (
         <AppBar
             sx={{
@@ -40,14 +47,14 @@ const NavBar = () => {
 
 
                 <FlexBetween gap="1.3rem">
-                    <IconButton>
+                    <IconButton onClick={handlerTogleTheme}>
                         {theme.palette.mode === 'dark' ?
                             <DarkModeOutlinedIcon sx={{fontSize: "25px"}}/> :
                             <LightModeOutlinedIcon sx={{fontSize: "25px"}}/>
                         }
                     </IconButton>
                     <IconButton>
-                        <SettingsOutlinedIcon sx={{fontSize: "25px"}} />
+                        <SettingsOutlinedIcon sx={{fontSize: "25px"}}/>
                     </IconButton>
                 </FlexBetween>
 
