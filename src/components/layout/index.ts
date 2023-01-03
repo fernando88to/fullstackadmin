@@ -1,3 +1,4 @@
 import Layout from "./Layout";
 import FlexBetween from "./FlexBetween";
-export {Layout, FlexBetween }
+import NavBar from "./NavBar";
+export {Layout, FlexBetween, NavBar }

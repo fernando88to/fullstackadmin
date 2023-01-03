@@ -1,9 +1,16 @@
 import React from 'react';
+import {NavBar} from "./index";
 
-const Layout = () => {
+
+interface propsLayout {
+    children: React.ReactNode
+}
+const Layout = (props:propsLayout) => {
     return (
         <div>
-            <p>meu layout</p>
+            <NavBar></NavBar>
+
+            {props.children}
         </div>
     );
 };
