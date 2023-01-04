@@ -1,4 +1,5 @@
 import {
+    Avatar,
     Divider,
     Drawer,
     IconButton,
@@ -7,76 +8,16 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
-
     Typography
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import {FlexBetween} from "./index";
 import {useTheme} from "@mui/material/styles";
 import {ChevronLeft, ChevronRightOutlined, SettingsOutlined} from "@mui/icons-material";
-import {useState} from "react";
 import {IMenuType, menuList} from "../layout/Menu"
 import {useRouter} from "next/router";
 
 
-/*const navItems = [
-    {
-        text: "Dashboard",
-        icon: <HomeOutlined/>,
-    },
-    {
-        text: "Client Facing",
-        icon: null,
-    },
-    {
-        text: "Products",
-        icon: <ShoppingCartOutlined/>,
-    },
-    {
-        text: "Customers",
-        icon: <Groups2Outlined/>,
-    },
-    {
-        text: "Transactions",
-        icon: <ReceiptLongOutlined/>,
-    },
-    {
-        text: "Geography",
-        icon: <PublicOutlined/>,
-    },
-    {
-        text: "Sales",
-        icon: null,
-    },
-    {
-        text: "Overview",
-        icon: <PointOfSaleOutlined/>,
-    },
-    {
-        text: "Daily",
-        icon: <TodayOutlined/>,
-    },
-    {
-        text: "Monthly",
-        icon: <CalendarMonthOutlined/>,
-    },
-    {
-        text: "Breakdown",
-        icon: <PieChartOutlined/>,
-    },
-    {
-        text: "Management",
-        icon: null,
-    },
-    {
-        text: "Admin",
-        icon: <AdminPanelSettingsOutlined/>,
-    },
-    {
-        text: "Performance",
-        icon: <TrendingUpOutlined/>,
-    },
-];*/
 
 const navItems = menuList;
 
@@ -90,7 +31,7 @@ interface Iprops {
 const SideBar = (props: Iprops) => {
     const theme = useTheme();
     // const [active, setActive] = useState("");
-    const profileImage = "";
+
     const router = useRouter();
 
 
@@ -188,28 +129,21 @@ const SideBar = (props: Iprops) => {
 
                 <Box position="absolute" bottom="2rem">
                     <Divider/>
-                    <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
-                        <Box
-                            component="img"
-                            alt="profile"
-                            src={profileImage}
-                            height="40px"
-                            width="40px"
-                            borderRadius="50%"
-                            sx={{objectFit: "cover"}}
-                        />
+                    <FlexBetween textTransform="none" gap="1rem" m="1.5rem 0 0 3rem">
+                        <Avatar alt="Remy Sharp"  src="/profile.jpeg"  sx={{width:56, height:56}}/>
                         <Box textAlign="left">
                             <Typography
                                 fontWeight="bold"
                                 fontSize="0.9rem"
                                 sx={{color: secondary100}}>
                                 {/* {user.name}*/}
+                                Fernando
                             </Typography>
                             <Typography
                                 fontSize="0.8rem"
-                                sx={{color: secondary200}}
-                            >
+                                sx={{color: secondary200}}>
                                 {/* {user.occupation}*/}
+                                Programador
                             </Typography>
                         </Box>
                         <SettingsOutlined
