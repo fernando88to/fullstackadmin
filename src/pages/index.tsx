@@ -1,16 +1,13 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import {Layout} from "../components/layout";
 
 
-export default function About() {
+export default function IndexPage() {
 
 
     return (
         <Layout>
-            <Button variant="contained" >
-                Trocar tema
-            </Button>
+            <p>Pagina 1</p>
         </Layout>
     );
 }

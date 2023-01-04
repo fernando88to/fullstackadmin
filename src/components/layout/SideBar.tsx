@@ -15,7 +15,7 @@ import {FlexBetween} from "./index";
 import {useTheme} from "@mui/material/styles";
 import {ChevronLeft, ChevronRightOutlined, SettingsOutlined} from "@mui/icons-material";
 import {useState} from "react";
-import {menuList} from "../layout/Menu"
+import {IMenuType, menuList} from "../layout/Menu"
 import {useRouter} from "next/router";
 
 
@@ -89,7 +89,7 @@ interface Iprops {
 
 const SideBar = (props: Iprops) => {
     const theme = useTheme();
-    const [active, setActive] = useState("");
+    // const [active, setActive] = useState("");
     const profileImage = "";
     const router = useRouter();
 
@@ -100,6 +100,10 @@ const SideBar = (props: Iprops) => {
             return
         }
         router.push(path);
+    }
+
+    const isSelected = (path?: string) => {
+        return router.pathname === path;
     }
 
     // @ts-ignore
@@ -128,7 +132,7 @@ const SideBar = (props: Iprops) => {
                         borderWidth: !props.isMobile ? 0 : "2px",
                     },
                 }}>
-            <Box sx={{width: props.widthNavBar}} component="nav" >
+            <Box sx={{width: props.widthNavBar}} component="nav">
 
 
                 <Box m="1.5rem 2rem 2rem 3rem">
@@ -146,37 +150,34 @@ const SideBar = (props: Iprops) => {
                     </FlexBetween>
                 </Box>
                 <List>
-                    {navItems.map(({text, icon, path}) => {
-                        if (!icon) {
+                    {navItems.map((menu: IMenuType) => {
+                        if (!menu.icon) {
                             return (
-                                <Typography key={text} sx={{m: "2.25rem 0 1rem 3rem"}}>
-                                    {text}
+                                <Typography key={menu.text} sx={{m: "2.25rem 0 1rem 3rem"}}>
+                                    {menu.text}
                                 </Typography>
                             );
                         }
-                        const lcText = text.toLowerCase();
 
                         return (
-                            <ListItem key={text} disablePadding>
+                            <ListItem key={menu.text} disablePadding>
                                 <ListItemButton
                                     onClick={() => {
-                                        handleClickMenu(path)
+                                        handleClickMenu(menu.path)
                                     }}
                                     sx={{
-                                        backgroundColor:
-                                            active === lcText ? secondary300 : "transparent",
-                                        color:
-                                            active === lcText ? secondary600 : secondary100,
+                                        backgroundColor: isSelected(menu.path) ? secondary300 : "transparent",
+                                        color: isSelected(menu.path) ? secondary600 : secondary100,
                                     }}>
                                     <ListItemIcon
                                         sx={{
                                             ml: "2rem",
-                                            color: active === lcText ? primary600 : secondary200,
+                                            color: isSelected(menu.path) ? primary600 : secondary200,
                                         }}>
-                                        {icon}
+                                        {menu.icon}
                                     </ListItemIcon>
-                                    <ListItemText primary={text}/>
-                                    {active === lcText && (
+                                    <ListItemText primary={menu.text}/>
+                                    {isSelected(menu.path) && (
                                         <ChevronRightOutlined sx={{ml: "auto"}}/>
                                     )}
                                 </ListItemButton>
