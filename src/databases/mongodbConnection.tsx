@@ -30,6 +30,10 @@ interface RetornoClientMongo {
 export default async function connectToDatabase(): Promise<RetornoClientMongo> {
 
 
+    if (cachedDb != null && cachedClient != null) {
+        return {client: cachedClient, db: cachedDb} as RetornoClientMongo
+
+    }
     const client = new MongoClient(URI,
         {
             serverApi: ServerApiVersion.v1
@@ -37,7 +41,7 @@ export default async function connectToDatabase(): Promise<RetornoClientMongo> {
     );
 
     const db = await client.db(MONGO_DB_NAME);
-
+    console.log("abriu conexao");
 
     cachedClient = client;
     cachedDb = db;
