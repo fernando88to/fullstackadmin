@@ -4,7 +4,17 @@ import {useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import SideBar from "./SideBar";
+import {styled} from '@mui/system';
 
+
+const widthNavBarSize = 250;
+
+const ContainerBox = styled(Box)(({theme}) => ({
+    paddingTop: theme.spacing(1),
+    paddingLeft: (250 + 8) + "px",
+    marginTop: "65px",
+    width: "100%"
+}));
 
 interface propsLayout {
     children: React.ReactNode
@@ -17,7 +27,8 @@ const Layout = (props: propsLayout) => {
         noSsr: false
     });
     const [isSideBarOpen, setIsSideBarOpen] = useState(true);
-    const widthNavBar = "250px";
+
+    const widthNavBar = widthNavBarSize + "px";
 
     return (
         <Box display={isMobile ? "block" : "flex"} width="100vw" height="100vh" overflow="hidden">
@@ -31,11 +42,11 @@ const Layout = (props: propsLayout) => {
             <NavBar isOpenSideBar={isSideBarOpen}
                     toggleSideBar={setIsSideBarOpen}
                     widthNavBar={widthNavBar}
-           />
+            />
 
-            <Box sx={{paddingLeft: widthNavBar, marginTop:"65px", width:"100%"}}>
+            <ContainerBox>
                 {props.children}
-            </Box>
+            </ContainerBox>
 
         </Box>
     );
