@@ -41,7 +41,6 @@ export default async function connectToDatabase(): Promise<RetornoClientMongo> {
     );
 
     const db = await client.db(MONGO_DB_NAME);
-    console.log("abriu conexao");
 
     cachedClient = client;
     cachedDb = db;
