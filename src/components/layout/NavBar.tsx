@@ -13,7 +13,8 @@ interface INavBar {
     // children: React.ReactNode
     isOpenSideBar: boolean
     toggleSideBar: any
-    widthNavBar:string
+    widthNavBar: string
+    isMobile: boolean
 }
 
 const NavBar = (props: INavBar) => {
@@ -37,7 +38,7 @@ const NavBar = (props: INavBar) => {
             }}>
                 {/*LEFT SIDE*/}
                 <FlexBetween>
-                    <IconButton onClick={() => console.log("open/close sidebar")}>
+                    <IconButton onClick={() => props.toggleSideBar(!props.isOpenSideBar)}>
                         <MenuIcon/>
                     </IconButton>
                     <FlexBetween borderRadius="9px"

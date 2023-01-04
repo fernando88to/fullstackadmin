@@ -18,7 +18,6 @@ import {IMenuType, menuList} from "../layout/Menu"
 import {useRouter} from "next/router";
 
 
-
 const navItems = menuList;
 
 interface Iprops {
@@ -30,10 +29,7 @@ interface Iprops {
 
 const SideBar = (props: Iprops) => {
     const theme = useTheme();
-    // const [active, setActive] = useState("");
-
     const router = useRouter();
-
 
     const handleClickMenu = (path?: string) => {
         if (!path) {
@@ -130,7 +126,7 @@ const SideBar = (props: Iprops) => {
                 <Box position="absolute" bottom="2rem">
                     <Divider/>
                     <FlexBetween textTransform="none" gap="1rem" m="1.5rem 0 0 3rem">
-                        <Avatar alt="Remy Sharp"  src="/profile.jpeg"  sx={{width:56, height:56}}/>
+                        <Avatar alt="Remy Sharp" src="/profile.jpeg" sx={{width: 56, height: 56}}/>
                         <Box textAlign="left">
                             <Typography
                                 fontWeight="bold"

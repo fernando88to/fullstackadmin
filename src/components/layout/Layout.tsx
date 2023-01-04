@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import NavBar from "./NavBar";
 import {useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
@@ -11,7 +11,6 @@ const widthNavBarSize = 250;
 
 const ContainerBox = styled(Box)(({theme}) => ({
     paddingTop: theme.spacing(1),
-    paddingLeft: (250 + 8) + "px",
     marginTop: "65px",
     width: "100%"
 }));
@@ -21,14 +20,25 @@ interface propsLayout {
 }
 
 const Layout = (props: propsLayout) => {
-    //const isNonMobile = useMediaQuery("(min-width: 600px)");
+
+    const widthNavBarSizePlus = widthNavBarSize + 8;
     const theme = useTheme();
     const isMobile: boolean = useMediaQuery(theme.breakpoints.down("sm"), {
         noSsr: false
     });
     const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+    const [paddingLeftContainer, setPaddingLeftContainer] = useState(widthNavBarSizePlus + "px");
+    const [paddingLeftNavBar, setpaddingLeftNavBar] = useState(widthNavBarSize + "px");
+
+    useEffect(() => {
+        const draftPaddingLeftContainer = isSideBarOpen ? (widthNavBarSizePlus + "px") : "8px";
+        const draftPaddingLeftNavBar = isSideBarOpen ? (widthNavBarSizePlus + "px") : "2px";
+        setPaddingLeftContainer(draftPaddingLeftContainer);
+        setpaddingLeftNavBar(draftPaddingLeftNavBar);
+    }, [isSideBarOpen]);
 
     const widthNavBar = widthNavBarSize + "px";
+
 
     return (
         <Box display={isMobile ? "block" : "flex"} width="100vw" height="100vh" overflow="hidden">
@@ -41,10 +51,11 @@ const Layout = (props: propsLayout) => {
 
             <NavBar isOpenSideBar={isSideBarOpen}
                     toggleSideBar={setIsSideBarOpen}
-                    widthNavBar={widthNavBar}
+                    widthNavBar={paddingLeftNavBar}
+                    isMobile={isMobile}
             />
 
-            <ContainerBox>
+            <ContainerBox sx={{paddingLeft: paddingLeftContainer}}>
                 {props.children}
             </ContainerBox>
 
