@@ -22,18 +22,21 @@ const Layout = (props: propsLayout) => {
     return (
         <Box display={isMobile ? "block" : "flex"} width="100vw" height="100vh" overflow="hidden">
 
-            <NavBar isOpenSideBar={isSideBarOpen}
-                    toggleSideBar={setIsSideBarOpen}
-                    widthNavBar={widthNavBar}/>
-
             <SideBar
                 isMobile={isMobile}
                 isOpenSideBar={isSideBarOpen}
                 toggleSideBar={setIsSideBarOpen}
                 widthNavBar={widthNavBar}/>
 
+            <NavBar isOpenSideBar={isSideBarOpen}
+                    toggleSideBar={setIsSideBarOpen}
+                    widthNavBar={widthNavBar}
+           />
 
-            {props.children}
+            <Box sx={{paddingLeft: widthNavBar, marginTop:"65px", width:"100%"}}>
+                {props.children}
+            </Box>
+
         </Box>
     );
 };

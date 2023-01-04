@@ -7,22 +7,19 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
+
     Typography
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import {FlexBetween} from "./index";
 import {useTheme} from "@mui/material/styles";
-import {
-    AdminPanelSettingsOutlined,
-    CalendarMonthOutlined, ChevronLeft, ChevronRightOutlined, Groups2Outlined, HomeOutlined,
-    PieChartOutlined,
-    PointOfSaleOutlined, PublicOutlined, ReceiptLongOutlined,
-    SettingsOutlined, ShoppingCartOutlined, TodayOutlined, TrendingUpOutlined
-} from "@mui/icons-material";
+import {ChevronLeft, ChevronRightOutlined, SettingsOutlined} from "@mui/icons-material";
 import {useState} from "react";
+import {menuList} from "../layout/Menu"
+import {useRouter} from "next/router";
 
 
-const navItems = [
+/*const navItems = [
     {
         text: "Dashboard",
         icon: <HomeOutlined/>,
@@ -79,8 +76,9 @@ const navItems = [
         text: "Performance",
         icon: <TrendingUpOutlined/>,
     },
-];
+];*/
 
+const navItems = menuList;
 
 interface Iprops {
     isMobile: boolean
@@ -93,6 +91,16 @@ const SideBar = (props: Iprops) => {
     const theme = useTheme();
     const [active, setActive] = useState("");
     const profileImage = "";
+    const router = useRouter();
+
+
+    const handleClickMenu = (path?: string) => {
+        if (!path) {
+            router.push("/");
+            return
+        }
+        router.push(path);
+    }
 
     // @ts-ignore
     const secondary200 = theme.palette.secondary[200];
@@ -120,7 +128,7 @@ const SideBar = (props: Iprops) => {
                         borderWidth: !props.isMobile ? 0 : "2px",
                     },
                 }}>
-            <Box sx={{width: props.widthNavBar}}>
+            <Box sx={{width: props.widthNavBar}} component="nav" >
 
 
                 <Box m="1.5rem 2rem 2rem 3rem">
@@ -138,7 +146,7 @@ const SideBar = (props: Iprops) => {
                     </FlexBetween>
                 </Box>
                 <List>
-                    {navItems.map(({text, icon}) => {
+                    {navItems.map(({text, icon, path}) => {
                         if (!icon) {
                             return (
                                 <Typography key={text} sx={{m: "2.25rem 0 1rem 3rem"}}>
@@ -152,8 +160,7 @@ const SideBar = (props: Iprops) => {
                             <ListItem key={text} disablePadding>
                                 <ListItemButton
                                     onClick={() => {
-                                        /* navigate(`/${lcText}`);
-                                         setActive(lcText);*/
+                                        handleClickMenu(path)
                                     }}
                                     sx={{
                                         backgroundColor:
