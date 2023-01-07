@@ -21,9 +21,9 @@ export interface IMenuType {
 export const menuList: IMenuType[] = [
     {text: "Dashboard", icon: <HomeOutlined/>, active: true, path: "/"},
     {text: "Client Facing", icon: null, active: false},
-    {text: "Products", icon: <ShoppingCartOutlined/>, active: false, path: "/pagina2"},
-    {text: "Products2", icon: <ShoppingCartOutlined/>, active: false, path: "/products"},
-    {text: "Customers", icon: <Groups2Outlined/>, active: false, path: "/pagina3"},
+    {text: "Pagina 2", icon: <ShoppingCartOutlined/>, active: false, path: "/pagina2"},
+    {text: "Products", icon: <ShoppingCartOutlined/>, active: false, path: "/products"},
+    {text: "Products with swr", icon: <Groups2Outlined/>, active: false, path: "/products2"},
     {text: "Transactions", icon: <ReceiptLongOutlined/>, active: false, path: "/pagina4"},
     {text: "Geography", icon: <PublicOutlined/>, active: false, path: "/pagina5"},
     {text: "Sales", icon: null, active: false, path: "/pagina2"},

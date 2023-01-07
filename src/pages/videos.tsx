@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import {Layout} from "../components/layout";
-import {clientProducts} from "../clients/clientBackend";
+import {clientBackend} from "../clients/clientBackend";
 import {Product} from "../types/Product";
+import {VideoType} from "../types/VideoType";
 
 interface IpropsListVideo {
-    data?: Product[]
+    data?: VideoType[]
 }
 
 const ListVideo = ({data}: IpropsListVideo) => {
@@ -14,8 +15,8 @@ const ListVideo = ({data}: IpropsListVideo) => {
             <>
                 {data && data.map((item) => {
                     return (
-                        <p key={item.name}>
-                            {item.name}
+                        <p key={item.title}>
+                            {item.title}
                         </p>
 
                     );
@@ -28,14 +29,14 @@ const ListVideo = ({data}: IpropsListVideo) => {
 }
 
 export default function Page() {
-    const [data, setData] = useState<Product[]>();
+    const [data, setData] = useState<VideoType[]>();
     // set loading to true initially
     const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
         const dataFetch = async () => {
-            const videosList = await clientProducts.listAllProducts();
+            const videosList = await clientBackend.listAllVideo();
 
             // set state when the data received
             setData(videosList);

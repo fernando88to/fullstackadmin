@@ -1,5 +1,6 @@
 import {VideoType} from "../types/VideoType";
 import connectToDatabase from "./mongodbConnection";
+import {Product} from "../types/Product";
 // import moment from "moment/moment";
 
 
@@ -20,5 +21,27 @@ export const mongoService = {
     }
 
 }
+
+
+const productCollection = 'product';
+export const mongoServiceProducts = {
+
+    getAll: async (): Promise<Product[]> => {
+        const {db} = await connectToDatabase();
+        const prodocuts = await db.collection<Product>(productCollection);
+        const productsList = await prodocuts.find({}).toArray();
+        return productsList;
+    },
+    insert: async (documento: any): Promise<Product> => {
+        const {db} = await connectToDatabase();
+        const collection = db.collection(productCollection);
+        await collection.insertOne(documento);
+        return documento
+    }
+
+}
+
+
+
 
 

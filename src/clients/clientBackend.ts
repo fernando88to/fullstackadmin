@@ -1,5 +1,7 @@
 import axios, {AxiosInstance} from "axios";
 import {Product} from "../types/Product";
+import useSWR from "swr";
+import {VideoType} from "../types/VideoType";
 
 
 // const ENDERECO_BACKEND = process.env.NEXT_PUBLIC_ENDERECO_BACKEND;
@@ -7,7 +9,7 @@ const ENDERECO_BACKEND = "/api/";
 const APPLICATION_JSON = 'application/json';
 const instance: AxiosInstance = axios.create({
     baseURL: ENDERECO_BACKEND,
-    timeout: 1000,
+    // timeout: 1000,
     withCredentials: true
 
 });
@@ -40,5 +42,33 @@ export const clientBackend = {
             return [];
         }
         return retornoApi.data as Product[];
+    },
+    listAllVideo: async (): Promise<VideoType[]> => {
+        const retornoApi = await chamarAxios('/videos', METHOD.GET, {}, );
+        if(retornoApi.data == undefined){
+            return [];
+        }
+        return retornoApi.data as VideoType[];
     }
+
+}
+
+
+export const clientProducts = {
+    listAllProducts: async (): Promise<Product[]> => {
+        const retornoApi = await chamarAxios('/products', METHOD.GET, {}, );
+        if(retornoApi.data == undefined){
+            return [];
+        }
+        return retornoApi.data as Product[];
+    }
+}
+
+export function useFetch<Data = any, Error = any>(url: string) {
+    const { data, error } = useSWR<Data, Error>(url, async url => {
+        const response = await chamarAxios(url, METHOD.GET, {}, );
+        return response.data;
+    })
+
+    return { data, error }
 }

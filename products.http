@@ -1,0 +1,11 @@
+### Send POST request with json body
+PUT http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "category": "Carro",
+  "createdAt": "01/01/2023",
+  "description": "Fusca lindo",
+  "name": "Fusca lindo",
+  "rating": 2.5
+}
