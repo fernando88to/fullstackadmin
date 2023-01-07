@@ -1,6 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
 import moment from 'moment';
 import {mongoServiceProducts} from "../../databases/mongoService";
+import {sleep} from "../../core/Sleep";
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -11,6 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
 
         case 'GET':
+            sleep(3000);
             const productsList = await mongoServiceProducts.getAll();
             res.status(200).json(productsList);
             break
