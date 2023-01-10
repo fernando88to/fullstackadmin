@@ -5,9 +5,10 @@ import {clientProducts} from "../clients/clientBackend";
 import {Product} from "../types/Product";
 import {Header} from "../components/Header";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import {Card, CardContent, Paper, Rating, Typography} from "@mui/material";
+import {Card, CardActions, CardContent, Collapse, Paper, Rating, Typography} from "@mui/material";
 import {styled, useTheme} from '@mui/material/styles';
 import {CircularIndeterminate} from "../components/Progress";
+import Button from "@mui/material/Button";
 
 const Item = styled(Paper)(({theme}) => ({
 
@@ -24,6 +25,8 @@ const CardItem: React.FC<{ category: string, name: string, rating: number }> = (
     const backgroundAltColor = theme.palette.background.alt;
     // @ts-ignore
     const secondary700Color = theme.palette.secondary[700];
+    // @ts-ignore
+    const neutral300Color = theme.palette.neutral[300];
     return (
         <Card
             sx={{
@@ -46,6 +49,19 @@ const CardItem: React.FC<{ category: string, name: string, rating: number }> = (
                 </Typography>
                 <Rating value={props.rating} readOnly />
             </CardContent>
+            <CardActions>
+                <Button color="primary" size="small" onClick={()=> setIsExpanded(!isExpanded)}>See More</Button>
+            </CardActions>
+            <Collapse
+                in={isExpanded}
+                timeout="auto"
+                unmountOnExit
+                sx={{color: neutral300Color}}>
+                <CardContent>
+                    <Typography>id: {545}</Typography>
+                    <Typography>Yearly Sales this year: {5454654}</Typography>
+                </CardContent>
+            </Collapse>
 
         </Card>
     );
@@ -59,7 +75,7 @@ const ListVideo: React.FC<{ data?: Product[] }> = ({data}) => {
                 <Grid2 container spacing={2}>
                     {data && data.map((item) => {
                         return (
-                            <Grid2 key={item.name} xs={4}>
+                            <Grid2 key={item.name} xs={12} sm={4} >
                                 <CardItem name={item.name} category={item.category} rating={item.rating} />
                             </Grid2>
                         );

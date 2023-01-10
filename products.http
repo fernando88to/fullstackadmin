@@ -4,8 +4,8 @@ Content-Type: application/json
 
 {
   "category": "Carro",
-  "createdAt": "01/01/2023",
-  "description": "Fusca lindo",
-  "name": "Fusca lindo",
-  "rating": 2.5
+  "createdAt": "01/01/2024",
+  "description": "Hilux SRV 4x4 3.0 CD Diesel 2015",
+  "name": "Hilux SRV 4x4 3.0 CD Diesel 2015",
+  "rating": 5.0
 }
