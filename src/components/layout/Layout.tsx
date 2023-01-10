@@ -41,7 +41,7 @@ const Layout = (props: propsLayout) => {
 
 
     return (
-        <Box display={isMobile ? "block" : "flex"} width="100vw" height="100vh" overflow="hidden">
+        <Box display={isMobile ? "block" : "flex"} width="100vw" minHeight="100vh" overflow="hidden">
 
             <SideBar
                 isMobile={isMobile}
