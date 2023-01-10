@@ -20,7 +20,8 @@ interface INavBar {
 const NavBar = (props: INavBar) => {
     const theme = useTheme();
     const {toggleColorMode} = useContext(ColorModeContext);
-
+    // @ts-ignore
+    const backgroundColor = theme.palette.background.default;
     const handlerTogleTheme = () => {
         toggleColorMode();
     }
@@ -34,7 +35,7 @@ const NavBar = (props: INavBar) => {
                 paddingLeft:props.widthNavBar
             }}>
             <Toolbar sx={{
-                justifyContent: "space-between"
+                justifyContent: "space-between", backgroundColor:backgroundColor, marginBottom:"2px"
             }}>
                 {/*LEFT SIDE*/}
                 <FlexBetween>
