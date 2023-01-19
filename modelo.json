@@ -1,0 +1,42 @@
+//cartorio
+{
+  "id": 1,
+  "cns": 123323,
+  "nome": "Cartorio de alguma coisa",
+  "segmentos": [
+    {"id": 1, "nome": "Protesto"},
+    {"id": 2, "nome": "Registro Civil"}
+  ],
+  "endereco": {
+    "bairro": "centro",
+    "cep": "77021688",
+    "numero": 1,
+    "logradouro": "dsljkfd jsfkldf j",
+    "complemento": null,
+    "cidade": {
+      "id": 1,
+      "nome": "palmas",
+      "estado": "TO"
+    }
+  },
+  "estado": "TO",
+  "contatos": [
+    "(063)9293949393", "fernando@teste.com"
+  ]
+
+
+
+}
+
+
+//cidade
+{
+  "id": 1,
+  "nome": "palmas",
+  "estado": "TO"
+ }
+
+//segmentos
+{"id": 1, "nome": "Protesto"}
+
+
