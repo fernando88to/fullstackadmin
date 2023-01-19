@@ -40,3 +40,7 @@
 {"id": 1, "nome": "Protesto"}
 
 
+deleta todos os documentos
+
+
+db.segmentos.deleteMany({});
