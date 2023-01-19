@@ -28,7 +28,7 @@ npm i --save @emotion/cache @emotion/react @emotion/server @emotion/styled @mui/
 
 ### Para fazer
 
-* Tela de visualização dos segmentos
+* Tela de visualização dos segmentos em formato de cards
 * Update de de atualização dos segmetos juntamente com update nos cartórios
 * Tela de visualização das cidades
 

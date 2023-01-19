@@ -3,9 +3,9 @@ import {
     Groups2Outlined,
     HomeOutlined,
     PieChartOutlined,
-    PointOfSaleOutlined, PublicOutlined, ReceiptLongOutlined,
+    PublicOutlined, ReceiptLongOutlined,
     ShoppingCartOutlined,
-    TodayOutlined, TrendingUpOutlined
+    TodayOutlined, TrendingUpOutlined, DragIndicator
 } from "@mui/icons-material";
 import React from "react";
 
@@ -26,8 +26,8 @@ export const menuList: IMenuType[] = [
     {text: "Products with swr", icon: <Groups2Outlined/>, active: false, path: "/products2"},
     {text: "Transactions", icon: <ReceiptLongOutlined/>, active: false, path: "/pagina4"},
     {text: "Geography", icon: <PublicOutlined/>, active: false, path: "/pagina5"},
-    {text: "Sales", icon: null, active: false, path: "/pagina2"},
-    {text: "Overview", icon: <PointOfSaleOutlined/>, active: false, path: "/pagina6"},
+    {text: "Cadastro", icon: null, active: false, path: "/pagina2"},
+    {text: "Segmentos", icon: <DragIndicator/>, active: false, path: "/segmentos"},
     {text: "Daily", icon: <TodayOutlined/>, active: false, path: "/pagina7"},
     {text: "Monthly", icon: <CalendarMonthOutlined/>, active: false, path: "/pagina8"},
     {text: "Breakdown", icon: <PieChartOutlined/>, active: false, path: "/pagina9"},

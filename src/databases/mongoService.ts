@@ -1,6 +1,7 @@
 import {VideoType} from "../types/VideoType";
 import connectToDatabase from "./mongodbConnection";
 import {Product} from "../types/Product";
+import {Segmento} from "../types/Segmento";
 // import moment from "moment/moment";
 
 
@@ -24,6 +25,7 @@ export const mongoService = {
 
 
 const productCollection = 'product';
+const segmentoCollection = 'segmentos';
 export const mongoServiceProducts = {
 
     getAll: async (): Promise<Product[]> => {
@@ -40,6 +42,19 @@ export const mongoServiceProducts = {
     }
 
 }
+
+
+export const mongoServiceSegmentos = {
+    getAll: async (): Promise<Segmento[]> => {
+        const {db} = await connectToDatabase();
+        const segmentoColle = await db.collection<Segmento>(segmentoCollection);
+        const segmentosList = await segmentoColle.find({}).toArray();
+        return segmentosList;
+
+
+    }
+}
+
 
 
 

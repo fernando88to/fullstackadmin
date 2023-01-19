@@ -2,6 +2,7 @@ import axios, {AxiosInstance} from "axios";
 import {Product} from "../types/Product";
 import useSWR from "swr";
 import {VideoType} from "../types/VideoType";
+import {Segmento} from "../types/Segmento";
 
 
 // const ENDERECO_BACKEND = process.env.NEXT_PUBLIC_ENDERECO_BACKEND;
@@ -37,18 +38,25 @@ async function chamarAxios(url: string, metodo_utilizado: string, dados: any): P
 
 export const clientBackend = {
     listAllProducts: async (): Promise<Product[]> => {
-        const retornoApi = await chamarAxios('/products', METHOD.GET, {}, );
-        if(retornoApi.data == undefined){
+        const retornoApi = await chamarAxios('/products', METHOD.GET, {},);
+        if (retornoApi.data == undefined) {
             return [];
         }
         return retornoApi.data as Product[];
     },
     listAllVideo: async (): Promise<VideoType[]> => {
-        const retornoApi = await chamarAxios('/videos', METHOD.GET, {}, );
-        if(retornoApi.data == undefined){
+        const retornoApi = await chamarAxios('/videos', METHOD.GET, {},);
+        if (retornoApi.data == undefined) {
             return [];
         }
         return retornoApi.data as VideoType[];
+    },
+    listAllSegmentos: async (): Promise<Segmento[]> => {
+        const retornoApi = await chamarAxios('/segmentos', METHOD.GET, {},);
+        if (retornoApi.data == undefined) {
+            return [];
+        }
+        return retornoApi.data as Segmento[];
     }
 
 }
@@ -56,8 +64,8 @@ export const clientBackend = {
 
 export const clientProducts = {
     listAllProducts: async (): Promise<Product[]> => {
-        const retornoApi = await chamarAxios('/products', METHOD.GET, {}, );
-        if(retornoApi.data == undefined){
+        const retornoApi = await chamarAxios('/products', METHOD.GET, {},);
+        if (retornoApi.data == undefined) {
             return [];
         }
         return retornoApi.data as Product[];
@@ -65,10 +73,10 @@ export const clientProducts = {
 }
 
 export function useFetch<Data = any, Error = any>(url: string) {
-    const { data, error } = useSWR<Data, Error>(url, async url => {
-        const response = await chamarAxios(url, METHOD.GET, {}, );
+    const {data, error} = useSWR<Data, Error>(url, async url => {
+        const response = await chamarAxios(url, METHOD.GET, {},);
         return response.data;
     })
 
-    return { data, error }
+    return {data, error}
 }
