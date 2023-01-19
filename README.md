@@ -24,3 +24,11 @@ https://nextjs.org/blog/next-13#nextfont
 
 
 npm i --save @emotion/cache @emotion/react @emotion/server @emotion/styled @mui/icons-material @mui/material
+
+
+### Para fazer
+
+* Tela de visualização dos segmentos
+* Update de de atualização dos segmetos juntamente com update nos cartórios
+* Tela de visualização das cidades
+
