@@ -17,7 +17,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
         props: {
             data: JSON.parse(JSON.stringify(allSegmentos))
         },
-        revalidate:10
+        revalidate:10,
+        fallback: true
     }
 }
 
