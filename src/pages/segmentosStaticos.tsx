@@ -10,15 +10,27 @@ type Props = {
     data: Segmento[]
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+    let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
+
+    return {
+        props: {
+            data: JSON.parse(JSON.stringify(allSegmentos))
+        },
+        revalidate:10
+    }
+}
+
+/*export async function getStaticProps() {
     let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
     return {
         props: {
             data:JSON.parse(JSON.stringify(allSegmentos))
         },
         revalidate: 10, // In seconds
+
     };
-}
+}*/
 /*export const getStaticProps: GetStaticProps = async (context) => {
 
     let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
@@ -47,15 +59,14 @@ const ListSegmento: React.FC<Props> = (props) => {
 }
 
 
-export default function Page(props:Props) {
-
+export default function Page(props: Props) {
 
 
     return (
         <Layout>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
-             <ListSegmento data={props.data}></ListSegmento>
+            <ListSegmento data={props.data}></ListSegmento>
 
         </Layout>
     );
