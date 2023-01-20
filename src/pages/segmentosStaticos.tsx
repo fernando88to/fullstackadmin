@@ -9,7 +9,17 @@ import {mongoServiceSegmentos} from "../databases/mongoService";
 type Props = {
     data: Segmento[]
 };
-export const getStaticProps: GetStaticProps = async (context) => {
+
+export async function getStaticProps() {
+    let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
+    return {
+        props: {
+            data:JSON.parse(JSON.stringify(allSegmentos))
+        },
+        revalidate: 10, // In seconds
+    };
+}
+/*export const getStaticProps: GetStaticProps = async (context) => {
 
     let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
     console.log(allSegmentos);
@@ -22,7 +32,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         // - At most once every 10 seconds
         revalidate: 30, // In seconds
     }
-}
+}*/
 const ListSegmento: React.FC<Props> = (props) => {
     return (
         <ul>
