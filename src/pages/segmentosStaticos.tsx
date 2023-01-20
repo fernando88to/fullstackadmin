@@ -10,15 +10,20 @@ type Props = {
     data: Segmento[]
 };
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+
+export async function loadData() {
     let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
+
+    return allSegmentos;
+}
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+    const data = await loadData();
 
     return {
         props: {
-            data: JSON.parse(JSON.stringify(allSegmentos))
+            data: JSON.parse(JSON.stringify(data))
         },
-        revalidate:10,
-        fallback: true
+        revalidate:10
     }
 }
 
