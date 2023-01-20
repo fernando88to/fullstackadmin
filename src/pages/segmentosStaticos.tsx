@@ -9,35 +9,7 @@ import {mongoServiceSegmentos} from "../databases/mongoService";
 type Props = {
     data: Segmento[]
 };
-
-
-export async function loadData() {
-    let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
-
-    return allSegmentos;
-}
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-    const data = await loadData();
-
-    return {
-        props: {
-            data: JSON.parse(JSON.stringify(data))
-        },
-        revalidate:10
-    }
-}
-
-/*export async function getStaticProps() {
-    let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
-    return {
-        props: {
-            data:JSON.parse(JSON.stringify(allSegmentos))
-        },
-        revalidate: 10, // In seconds
-
-    };
-}*/
-/*export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
 
     let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
     console.log(allSegmentos);
@@ -50,7 +22,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
         // - At most once every 10 seconds
         revalidate: 30, // In seconds
     }
-}*/
+}
 const ListSegmento: React.FC<Props> = (props) => {
     return (
         <ul>
@@ -65,14 +37,15 @@ const ListSegmento: React.FC<Props> = (props) => {
 }
 
 
-export default function Page(props: Props) {
+export default function Page(props:Props) {
+
 
 
     return (
         <Layout>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
-            <ListSegmento data={props.data}></ListSegmento>
+             <ListSegmento data={props.data}></ListSegmento>
 
         </Layout>
     );
