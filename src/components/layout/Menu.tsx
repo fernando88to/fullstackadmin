@@ -29,6 +29,7 @@ export const menuList: IMenuType[] = [
     {text: "Cadastro", icon: null, active: false, path: "/pagina2"},
     {text: "Segmentos", icon: <DragIndicator/>, active: false, path: "/segmentos"},
     {text: "Segmentos (statico)", icon: <DragIndicator/>, active: false, path: "/segmentosStaticos"},
+    {text: "Segmentos (swr)", icon: <DragIndicator/>, active: false, path: "/segmentosSwr"},
     {text: "Daily", icon: <TodayOutlined/>, active: false, path: "/pagina7"},
     {text: "Monthly", icon: <CalendarMonthOutlined/>, active: false, path: "/pagina8"},
     {text: "Breakdown", icon: <PieChartOutlined/>, active: false, path: "/pagina9"},
