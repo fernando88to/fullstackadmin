@@ -12,6 +12,7 @@ import {Router} from "next/router";
 import NProgress from 'nprogress';
 //import do css do nprogress
 import "nprogress/nprogress.css";
+import { Analytics } from '@vercel/analytics/react';
 
 
 NProgress.configure({showSpinner: false});
@@ -49,6 +50,7 @@ export default function MyApp(props: MyAppProps) {
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline/>
                 <Component {...pageProps} />
+                <Analytics />
             </ColorProviderWrapper>
 
             {/*global indica que vai ser em todas as paginas*/}
