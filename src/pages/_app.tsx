@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Head from 'next/head';
 import {AppProps} from 'next/app';
-import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {CacheProvider, EmotionCache} from '@emotion/react';
-import theme from '../theme';
 import createEmotionCache from '../createEmotionCache';
 import {ColorProviderWrapper} from "../context/ColorModeContext";
 import {Router} from "next/router";
@@ -12,7 +10,7 @@ import {Router} from "next/router";
 import NProgress from 'nprogress';
 //import do css do nprogress
 import "nprogress/nprogress.css";
-import { Analytics } from '@vercel/analytics/react';
+import {Analytics} from '@vercel/analytics/react';
 
 
 NProgress.configure({showSpinner: false});

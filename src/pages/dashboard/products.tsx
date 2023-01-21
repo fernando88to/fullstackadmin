@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {LayoutDashboard} from "../components/layout";
-import {clientProducts} from "../clients/clientBackend";
-import {Product} from "../types/Product";
-import {Header} from "../components/Header";
+import {LayoutDashboard} from "@/components/layout";
+import {clientProducts} from "@/clients/clientBackend";
+import {Product} from "@/types/Product";
+import {Header} from "@/components/Header";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import {Card, CardActions, CardContent, Collapse, Paper, Rating, Typography} from "@mui/material";
 import {styled, useTheme} from '@mui/material/styles';
-import {CircularIndeterminate} from "../components/Progress";
+import {CircularIndeterminate} from "@/components/Progress";
 import Button from "@mui/material/Button";
 
 const Item = styled(Paper)(({theme}) => ({

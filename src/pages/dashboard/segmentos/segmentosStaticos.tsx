@@ -1,9 +1,9 @@
-import {LayoutDashboard} from "../../components/layout";
-import {Header} from "../../components/Header";
+import {LayoutDashboard} from "@/components/layout";
+import {Header} from "@/components/Header";
 import React from "react";
-import {Segmento} from "../../types/Segmento";
+import {Segmento} from "@/types/Segmento";
 import {GetStaticProps} from "next";
-import {mongoServiceSegmentos} from "../../databases/mongoService";
+import {mongoServiceSegmentos} from "../../../databases/mongoService";
 
 
 type Props = {

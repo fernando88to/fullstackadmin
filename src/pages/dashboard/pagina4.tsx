@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {LayoutDashboard} from "../components/layout";
+import {LayoutDashboard} from "@/components/layout";
 import {GetServerSideProps} from "next";
-import {mongoService} from "../databases/mongoService";
-import {VideoType} from "../types/VideoType";
+import {mongoService} from "../../databases/mongoService";
+import {VideoType} from "@/types/VideoType";
 
 export const getServerSideProps: GetServerSideProps = async () => {
 

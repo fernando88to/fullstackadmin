@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {LayoutDashboard} from "../components/layout";
-import {clientBackend} from "../clients/clientBackend";
-import {Product} from "../types/Product";
-import {VideoType} from "../types/VideoType";
+import {LayoutDashboard} from "@/components/layout";
+import {clientBackend} from "@/clients/clientBackend";
+import {Product} from "@/types/Product";
+import {VideoType} from "@/types/VideoType";
 
 interface IpropsListVideo {
     data?: VideoType[]
