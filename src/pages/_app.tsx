@@ -11,6 +11,7 @@ import NProgress from 'nprogress';
 //import do css do nprogress
 import "nprogress/nprogress.css";
 import {Analytics} from '@vercel/analytics/react';
+import {SessionProvider} from "next-auth/react";
 
 
 NProgress.configure({showSpinner: false});
@@ -38,18 +39,21 @@ interface MyAppProps extends AppProps {
 
 
 export default function MyApp(props: MyAppProps) {
-    const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
+    const {Component, emotionCache = clientSideEmotionCache, pageProps: {session, ...pageProps}} = props;
     return (
         <CacheProvider value={emotionCache}>
             <Head>
                 <meta name="viewport" content="initial-scale=1, width=device-width"/>
             </Head>
-            <ColorProviderWrapper>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-                <CssBaseline/>
-                <Component {...pageProps} />
-                <Analytics />
-            </ColorProviderWrapper>
+            <SessionProvider session={session}>
+                <ColorProviderWrapper>
+                    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                    <CssBaseline/>
+                    <Component {...pageProps} />
+                    <Analytics/>
+                </ColorProviderWrapper>
+            </SessionProvider>
+
 
             {/*global indica que vai ser em todas as paginas*/}
             <style global jsx>
@@ -65,7 +69,8 @@ export default function MyApp(props: MyAppProps) {
                         background: #959ed6 !important;
                         height: 3px;
                       }
-                   /* ===== disable scroll horizontal ===== */
+
+                      /* ===== disable scroll horizontal ===== */
 
                       html, body {
                         max-width: 100%;
