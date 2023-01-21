@@ -67,28 +67,34 @@ export default function MyApp(props: MyAppProps) {
                         background: #959ed6 !important;
                         height: 3px;
                       }
+                   /* ===== disable scroll horizontal ===== */
+
+                      html, body {
+                        max-width: 100%;
+                        overflow-x: hidden;
+                      }
 
                       /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #21295c #2d3764;
-  }
+                      /* Firefox */
+                      * {
+                        scrollbar-width: auto;
+                        scrollbar-color: #21295c #2d3764;
+                      }
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 6px;
-  }
+                      /* Chrome, Edge, and Safari */
+                      *::-webkit-scrollbar {
+                        width: 6px;
+                      }
 
-  *::-webkit-scrollbar-track {
-    background: #2d3764;
-  }
+                      *::-webkit-scrollbar-track {
+                        background: #2d3764;
+                      }
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #21295c;
-    border-radius: 10px;
-    border: 3px none #ffffff;
-  }
+                      *::-webkit-scrollbar-thumb {
+                        background-color: #21295c;
+                        border-radius: 10px;
+                        border: 3px none #ffffff;
+                      }
 
 
                     `

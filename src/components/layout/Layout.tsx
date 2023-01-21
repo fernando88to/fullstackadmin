@@ -11,7 +11,10 @@ const widthNavBarSize = 250;
 
 const ContainerBox = styled(Box)(({theme}) => ({
     paddingTop: theme.spacing(1),
+    marginRight:"16px",
+    marginLeft:"8px",
     marginTop: "65px",
+    paddingBottom:"32px",
     width: "100%"
 }));
 

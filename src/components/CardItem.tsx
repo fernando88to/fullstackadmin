@@ -7,9 +7,8 @@ export const CardItem: React.FC<{ title: string, text: string }> = (props) => {
     // @ts-ignore
     const backgroundAltColor = theme.palette.background.alt;
     // @ts-ignore
-    const secondary700Color = theme.palette.secondary[700];
-    // @ts-ignore
-    const neutral300Color = theme.palette.neutral[300];
+    const secondary300Color = theme.palette.secondary[300];
+
     return (
         <Card
             sx={{
@@ -25,7 +24,9 @@ export const CardItem: React.FC<{ title: string, text: string }> = (props) => {
                     gutterBottom>
                     {props.title}
                 </Typography>
-                <Typography variant="h5" component="div" align="justify" color={secondary700Color}>
+                <Typography variant="h5" fontSize="16px"  lineHeight={1.6}
+                            component="p" align="justify"
+                            color={secondary300Color}>
                     {props.text}
                 </Typography>
 
