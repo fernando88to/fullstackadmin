@@ -25,7 +25,6 @@ export default function Page() {
     useEffect(() => {
         const dataFetch = async () => {
             let allSegmentos: Segmento[] = await clientBackend.listAllSegmentos();
-            console.log(allSegmentos);
             setData(allSegmentos);
             setLoading(false);
         }

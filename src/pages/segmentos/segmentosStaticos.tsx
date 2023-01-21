@@ -12,7 +12,6 @@ type Props = {
 export const getStaticProps: GetStaticProps = async (context) => {
 
     let allSegmentos: Segmento[] = await mongoServiceSegmentos.getAll();
-    console.log(allSegmentos);
     return {
         props: {
             data:JSON.parse(JSON.stringify(allSegmentos))

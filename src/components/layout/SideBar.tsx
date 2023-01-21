@@ -123,7 +123,7 @@ const SideBar = (props: Iprops) => {
                     })}
                 </List>
 
-                <Box position="absolute" bottom="2rem">
+                <Box  bottom="2rem">
                     <Divider/>
                     <FlexBetween textTransform="none" gap="1rem" m="1.5rem 0 0 3rem">
                         <Avatar alt="Remy Sharp" src="/profile.jpeg" sx={{width: 56, height: 56}}/>
