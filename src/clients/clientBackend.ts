@@ -1,8 +1,8 @@
 import axios, {AxiosInstance} from "axios";
 import {Product} from "../types/Product";
-import useSWR from "swr";
 import {VideoType} from "../types/VideoType";
 import {Segmento} from "../types/Segmento";
+import {METHOD} from "../types/MethodHTTP";
 
 
 // const ENDERECO_BACKEND = process.env.NEXT_PUBLIC_ENDERECO_BACKEND;
@@ -15,12 +15,9 @@ const instance: AxiosInstance = axios.create({
 
 });
 
-const METHOD = {
-    GET: 'GET',
-    POST: 'POST'
-}
 
-async function chamarAxios(url: string, metodo_utilizado: string, dados: any): Promise<any> {
+
+export async function chamarAxios(url: string, metodo_utilizado: string, dados: any): Promise<any> {
     let config = {
         headers: {
             ACCEPT: APPLICATION_JSON
@@ -72,11 +69,5 @@ export const clientProducts = {
     }
 }
 
-export function useFetch<Data = any, Error = any>(url: string) {
-    const {data, error} = useSWR<Data, Error>(url, async url => {
-        const response = await chamarAxios(url, METHOD.GET, {},);
-        return response.data;
-    })
 
-    return {data, error}
-}
+

@@ -2,7 +2,8 @@ import {Layout} from "../components/layout";
 import {Header} from "../components/Header";
 import React from "react";
 import {Segmento} from "../types/Segmento";
-import {useFetch} from "../clients/clientBackend";
+import {useGetAllSegmentos} from "../clients/clientBackendSWR";
+import {CircularProgress} from "@mui/material";
 
 
 type Props = {
@@ -24,16 +25,16 @@ const ListSegmento: React.FC<Props> = (props) => {
 
 
 export default function Page() {
-    const { data, error } = useFetch('/segmentos')
+
+    const { data, error } = useGetAllSegmentos();
 
 
     return (
         <Layout>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
-
             {error && <div>Failed to load </div>  }
-            {!data && <div>Loading...</div>  }
+            {!data && <CircularProgress /> }
             {data && <ListSegmento data={data}></ListSegmento>  }
 
 
