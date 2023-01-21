@@ -1,4 +1,4 @@
-import {Layout} from "../../components/layout";
+import {LayoutDashboard} from "../../components/layout";
 import {Header} from "../../components/Header";
 import React, {useEffect, useState} from "react";
 import {Segmento} from "../../types/Segmento";
@@ -31,11 +31,11 @@ export default function Page() {
         dataFetch();
     }, [])
     return (
-        <Layout>
+        <LayoutDashboard>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
             {loading ? <CircularIndeterminate/> : <ListSegmento data={data}></ListSegmento>}
 
-        </Layout>
+        </LayoutDashboard>
     );
 }

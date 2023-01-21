@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {Layout} from "../components/layout";
+import {LayoutDashboard} from "../components/layout";
 import {clientProducts} from "../clients/clientBackend";
 import {Product} from "../types/Product";
 import {Header} from "../components/Header";
@@ -110,9 +110,9 @@ export default function Page() {
 
 
     return (
-        <Layout>
+        <LayoutDashboard>
             <Header title="PRODUCTS" subTitle="See your list of products"/>
             {isLoading ? <CircularIndeterminate /> : <ListVideo data={data}/>}
-        </Layout>
+        </LayoutDashboard>
     );
 }

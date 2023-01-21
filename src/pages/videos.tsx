@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {Layout} from "../components/layout";
+import {LayoutDashboard} from "../components/layout";
 import {clientBackend} from "../clients/clientBackend";
 import {Product} from "../types/Product";
 import {VideoType} from "../types/VideoType";
@@ -48,10 +48,10 @@ export default function Page() {
 
 
     return (
-        <Layout>
+        <LayoutDashboard>
             <p>
                 {isLoading ? <p>carregando </p> : <ListVideo data={data}/>}
             </p>
-        </Layout>
+        </LayoutDashboard>
     );
 }

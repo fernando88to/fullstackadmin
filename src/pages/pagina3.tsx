@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import {Layout} from "../components/layout";
+import {LayoutDashboard} from "../components/layout";
 import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -15,10 +15,10 @@ export default function About() {
 
 
     return (
-        <Layout>
+        <LayoutDashboard>
             <p>
                 Pagina tres
             </p>
-        </Layout>
+        </LayoutDashboard>
     );
 }

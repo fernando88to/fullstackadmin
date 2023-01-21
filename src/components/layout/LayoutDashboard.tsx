@@ -22,7 +22,7 @@ interface propsLayout {
     children: React.ReactNode
 }
 
-const Layout = (props: propsLayout) => {
+const LayoutDashboard = (props: propsLayout) => {
 
     const widthNavBarSizePlus = widthNavBarSize + 8;
     const theme = useTheme();
@@ -66,4 +66,4 @@ const Layout = (props: propsLayout) => {
     );
 };
 
-export default Layout;
+export default LayoutDashboard;

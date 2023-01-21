@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout} from "@/components/layout";
+import {LayoutDashboard} from "@/components/layout";
 import {Header} from "@/components/Header";
 import {Segmento} from "@/types/Segmento";
 import {useGetAllSegmentos} from "@/hooks/segmentoHooks";
@@ -34,7 +34,7 @@ export default function Page() {
 
 
     return (
-        <Layout>
+        <LayoutDashboard>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
             <Container>
@@ -44,6 +44,6 @@ export default function Page() {
             </Container>
 
 
-        </Layout>
+        </LayoutDashboard>
     );
 }

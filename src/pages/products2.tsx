@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Layout} from "../components/layout";
+import {LayoutDashboard} from "../components/layout";
 import {useFetch} from "@/clients/clientBackendSWR";
 
 export default function Page() {
@@ -11,10 +11,10 @@ export default function Page() {
 
 
     return (
-        <Layout>
+        <LayoutDashboard>
             {error && <div>Failed to load </div>  }
             {!data && <div>Loading...</div>  }
             {data && <div>Carregou</div>  }
-        </Layout>
+        </LayoutDashboard>
     );
 }

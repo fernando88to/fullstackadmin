@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Layout} from "../components/layout";
+import {LayoutDashboard} from "../components/layout";
 import {GetServerSideProps} from "next";
 import {mongoService} from "../databases/mongoService";
 import {VideoType} from "../types/VideoType";
@@ -23,10 +23,10 @@ export default function Page({videosList}: Iprops) {
 
 
     return (
-        <Layout>
+        <LayoutDashboard>
             <p>
                 {videosList.length}
             </p>
-        </Layout>
+        </LayoutDashboard>
     );
 }
