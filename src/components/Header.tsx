@@ -15,11 +15,11 @@ export const Header = ({title, subTitle}: Iprops) => {
     const secondary300 = theme.palette.secondary[300];
 
     return (
-        <Box>
+        <Box sx={{paddingLeft:"8px", paddingRight:"8px"}}>
             <Typography variant="h2" color={secondary100} fontWeight="bold" sx={{mb: "5px"}}>
                 {title}
             </Typography>
-            <Typography variant="h5" color={secondary300}>
+            <Typography variant="h5" color={secondary300} sx={{paddingBottom:"8px"}}>
                 {subTitle}
             </Typography>
 
