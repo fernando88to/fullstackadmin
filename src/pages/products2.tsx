@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Layout} from "../components/layout";
-import {useFetch} from "../clients/clientBackend";
+import {useFetch} from "@/clients/clientBackendSWR";
 
 export default function Page() {
 

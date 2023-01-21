@@ -1,9 +1,9 @@
-import {Layout} from "../components/layout";
-import {Header} from "../components/Header";
 import React from "react";
-import {Segmento} from "../types/Segmento";
-import {useGetAllSegmentos} from "../clients/clientBackendSWR";
-import {CircularProgress} from "@mui/material";
+import {Layout} from "@/components/layout";
+import {Header} from "@/components/Header";
+import {Segmento} from "@/types/Segmento";
+import {useGetAllSegmentos} from "@/hooks/segmentoHooks";
+import {CircularIndeterminate} from "@/components/Progress";
 
 
 type Props = {
@@ -34,9 +34,8 @@ export default function Page() {
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
             {error && <div>Failed to load </div>  }
-            {!data && <CircularProgress /> }
+            {!data && <CircularIndeterminate /> }
             {data && <ListSegmento data={data}></ListSegmento>  }
-
 
         </Layout>
     );

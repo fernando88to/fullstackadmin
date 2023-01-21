@@ -1,9 +1,9 @@
-import {Layout} from "../components/layout";
-import {Header} from "../components/Header";
+import {Layout} from "../../components/layout";
+import {Header} from "../../components/Header";
 import React, {useEffect, useState} from "react";
-import {Segmento} from "../types/Segmento";
-import {clientBackend} from "../clients/clientBackend";
-import {CircularIndeterminate} from "../components/Progress";
+import {Segmento} from "../../types/Segmento";
+import {clientBackend} from "@/clients/clientBackend";
+import {CircularIndeterminate} from "../../components/Progress";
 
 
 const ListSegmento: React.FC<{ data: Segmento[] }> = (props) => {
