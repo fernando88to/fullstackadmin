@@ -16,7 +16,12 @@ export default async function middleware(request: NextRequest,response: NextResp
     };
     const params = { req: requestForNextAuth } as GetSessionParams ;
     const session = await getSession(params);
-    console.log(session?.user);
+
+    if (!session) {
+        const url = request.nextUrl.clone();
+        url.pathname = '/login';
+        return NextResponse.rewrite(url);
+    }
     // const { data } = useSession();
     // const session = await unstable_getServerSession(request, response, authOptions);
     // const session = await unstable_getServerSession(authOptions);

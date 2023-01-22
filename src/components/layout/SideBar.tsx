@@ -16,6 +16,7 @@ import {useTheme} from "@mui/material/styles";
 import {ChevronLeft, ChevronRightOutlined, SettingsOutlined} from "@mui/icons-material";
 import {IMenuType, menuList} from "../layout/Menu"
 import {useRouter} from "next/router";
+import { useSession} from "next-auth/react"
 
 
 const navItems = menuList;
@@ -30,7 +31,8 @@ interface Iprops {
 const SideBar = (props: Iprops) => {
     const theme = useTheme();
     const router = useRouter();
-
+    const { data: session } = useSession();
+    console.log(session?.user);
     const handleClickMenu = (path?: string) => {
         if (!path) {
             router.push("/");
@@ -126,21 +128,22 @@ const SideBar = (props: Iprops) => {
                 <Box  bottom="2rem">
                     <Divider/>
                     <FlexBetween textTransform="none" gap="1rem" m="1.5rem 0 0 3rem">
-                        <Avatar alt="Remy Sharp" src="/profile.jpeg" sx={{width: 56, height: 56}}/>
+                       {/* <Avatar alt="Remy Sharp" src="/profile.jpeg" sx={{width: 56, height: 56}}/>*/}
+                        <Avatar alt="User" src={session?.user?.image || ""} sx={{width: 56, height: 56}}/>
+
                         <Box textAlign="left">
                             <Typography
                                 fontWeight="bold"
                                 fontSize="0.9rem"
                                 sx={{color: secondary100}}>
-                                {/* {user.name}*/}
-                                Fernando
+                                 {session?.user?.name}
                             </Typography>
-                            <Typography
+                           {/* <Typography
                                 fontSize="0.8rem"
                                 sx={{color: secondary200}}>
-                                {/* {user.occupation}*/}
+                                 {user.occupation}
                                 Programador
-                            </Typography>
+                            </Typography>*/}
                         </Box>
                         <SettingsOutlined
                             sx={{
