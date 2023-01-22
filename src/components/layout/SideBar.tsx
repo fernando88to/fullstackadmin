@@ -129,7 +129,9 @@ const SideBar = (props: Iprops) => {
                     <Divider/>
                     <FlexBetween textTransform="none" gap="1rem" m="1.5rem 0 0 3rem">
                        {/* <Avatar alt="Remy Sharp" src="/profile.jpeg" sx={{width: 56, height: 56}}/>*/}
-                        <Avatar alt="User" src={session?.user?.image || ""} sx={{width: 56, height: 56}}/>
+                        <Avatar alt="User" src={session?.user?.image || ""}
+                                imgProps={{ referrerPolicy: "no-referrer" }}
+                                sx={{width: 56, height: 56}}/>
 
                         <Box textAlign="left">
                             <Typography

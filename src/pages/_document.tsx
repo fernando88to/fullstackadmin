@@ -9,7 +9,6 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en" className={fontInter.className}>
                 <Head>
-                    {/*sem isso não carrega o avatar do google*/}
                     <meta name="referrer" content="no-referrer" />
                     {/* PWA primary color */}
                     <meta name="theme-color" content={theme.palette.primary.main} />
