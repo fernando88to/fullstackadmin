@@ -48,16 +48,16 @@ const LayoutDashboard = (props: propsLayout) => {
     const widthNavBar = widthNavBarSize + "px";
 
 
-    /*if (!session && loading) {
+    if (!session && loading) {
         return (
             <p>aguarde</p>
-        )
+        );
     }
     if (!session) {
         return (
             <p>acesso negado</p>
-        )
-    }*/
+        );
+    }
 
     return (
         <Box display={isMobile ? "block" : "flex"} width="100vw" minHeight="100vh" overflow="hidden">
