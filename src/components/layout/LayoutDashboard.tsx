@@ -5,6 +5,8 @@ import {useTheme} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import SideBar from "./SideBar";
 import {styled} from '@mui/system';
+import {useRouter} from "next/router";
+import {useSession} from "next-auth/react";
 
 
 const widthNavBarSize = 250;
@@ -22,8 +24,10 @@ interface propsLayout {
     children: React.ReactNode
 }
 
-const LayoutDashboard = (props: propsLayout) => {
 
+const LayoutDashboard = (props: propsLayout) => {
+    const router = useRouter();
+    const { data: session } = useSession();
     const widthNavBarSizePlus = widthNavBarSize + 8;
     const theme = useTheme();
     const isMobile: boolean = useMediaQuery(theme.breakpoints.down("sm"), {
@@ -40,8 +44,15 @@ const LayoutDashboard = (props: propsLayout) => {
         setpaddingLeftNavBar(draftPaddingLeftNavBar);
     }, [isSideBarOpen]);
 
+
+
     const widthNavBar = widthNavBarSize + "px";
 
+    if (!session) {
+        return (
+           <p>acesso negado</p>
+        )
+    }
 
     return (
         <Box display={isMobile ? "block" : "flex"} width="100vw" minHeight="100vh" overflow="hidden">
@@ -64,6 +75,8 @@ const LayoutDashboard = (props: propsLayout) => {
 
         </Box>
     );
+
+
 };
 
 export default LayoutDashboard;

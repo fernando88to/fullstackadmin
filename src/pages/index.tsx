@@ -1,11 +1,16 @@
 import * as React from 'react';
-import {LayoutDashboard} from "@/components/layout";
-import Router from 'next/router'
+import {GetServerSideProps} from "next";
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const isAuthenticated = Boolean(context?.req.cookies?.session);
+    let destination  = '/dashboard/'
+    if(!isAuthenticated){
+        destination = '/login'
+    }
+
     return {
         redirect: {
-            destination: '/dashboard/',
+            destination: destination,
             permanent: false,
         },
     }
