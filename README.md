@@ -41,3 +41,7 @@ npm i --save @emotion/cache @emotion/react @emotion/server @emotion/styled @mui/
 5. Na configuração 'Origens JavaScript autorizadas' adicionar a url 'http://localhost:3000'
 6. Na configuração 'URIs de redirecionamento autorizados' adicionar a url 'http://localhost:3000/api/auth/callback/google'
 7. Copiar as CLIENT_ID e CLIENT_SECRET
+
+### Exemplo com next auth
+
+https://github.com/nextauthjs/next-auth-example/blob/main/components/header.tsx

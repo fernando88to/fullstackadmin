@@ -13,10 +13,10 @@ const widthNavBarSize = 250;
 
 const ContainerBox = styled(Box)(({theme}) => ({
     paddingTop: theme.spacing(1),
-    marginRight:"16px",
-    marginLeft:"8px",
+    marginRight: "16px",
+    marginLeft: "8px",
     marginTop: "65px",
-    paddingBottom:"32px",
+    paddingBottom: "32px",
     width: "100%"
 }));
 
@@ -27,7 +27,8 @@ interface propsLayout {
 
 const LayoutDashboard = (props: propsLayout) => {
     const router = useRouter();
-    const { data: session } = useSession();
+    const {data: session, status} = useSession()
+    const loading = status === "loading"
     const widthNavBarSizePlus = widthNavBarSize + 8;
     const theme = useTheme();
     const isMobile: boolean = useMediaQuery(theme.breakpoints.down("sm"), {
@@ -45,12 +46,16 @@ const LayoutDashboard = (props: propsLayout) => {
     }, [isSideBarOpen]);
 
 
-
     const widthNavBar = widthNavBarSize + "px";
 
-    if (!session) {
+    if (!session && loading) {
         return (
-           <p>acesso negado</p>
+            <p>aguarde</p>
+        )
+    }
+    if (!session && loading==false) {
+        return (
+            <p>acesso negado</p>
         )
     }
 

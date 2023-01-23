@@ -3,8 +3,8 @@ import {GetServerSideProps} from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const isAuthenticated = Boolean(context?.req.cookies?.session);
-    let destination  = '/dashboard/'
-    if(!isAuthenticated){
+    let destination = '/dashboard/'
+    if (!isAuthenticated) {
         destination = '/login'
     }
 
