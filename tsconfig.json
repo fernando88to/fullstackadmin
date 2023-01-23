@@ -20,6 +20,8 @@
       "@/clients/*": ["clients/*"],
       "@/components/*": ["components/*"],
       "@/types/*": ["types/*"],
+      "@/core/*": ["core/*"],
+      "@/databases/*": ["databases/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
