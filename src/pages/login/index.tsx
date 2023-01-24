@@ -5,7 +5,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import {styled, useTheme} from "@mui/material/styles";
 import {Button, Typography} from "@mui/material";
 import GoogleIcon from '@mui/icons-material/Google';
-import {signIn} from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
 import {signOut} from "next-auth/react"
 import {useRouter} from "next/router";
 
@@ -27,14 +27,15 @@ const FontCustomizer = styled(Typography)(({theme}) => ({
 }));
 export default function Page() {
     const theme = useTheme();
-    const router = useRouter();
+    const {data: session, status} = useSession()
+    const loading = status === 'loading';
     // @ts-ignore
     // const backgroundColor = theme.palette.primary[100];
     const backgroundColor = '#ffffff';
     // @ts-ignore
     const backgroundColorHeader = theme.palette.primary[700];
     const logout = async () => {
-         signOut({redirect: false, callbackUrl: "/login"});
+        signOut({redirect: false, callbackUrl: "/login"});
 
     }
 
@@ -44,13 +45,19 @@ export default function Page() {
                 <Grid2Customizer xs={12} md={2} sx={{backgroundColor: backgroundColor}}>
                     <Typography variant="h2" color={backgroundColorHeader} sx={{fontWeight: 'bold', m: 1}}
                                 textAlign="center">Login</Typography>
-                    <Button fullWidth color="error" size="large"
-                            onClick={()=>{signIn('google')}}
-                            variant="outlined" startIcon={<GoogleIcon />}>Google</Button>
 
-                    <Button fullWidth color="error" size="large"
-                            onClick={logout}
-                            variant="outlined">Sair</Button>
+                    {loading && !session && <p>aguarde</p>}
+                    {!session &&  <Button fullWidth color="error" size="large"
+                                          onClick={() => {
+                                              signIn('google')
+                                          }}
+                                          variant="outlined" startIcon={<GoogleIcon/>}>Google</Button> }
+
+
+                    {session && <Button fullWidth color="error" size="large"
+                                        onClick={logout}
+                                        variant="outlined">Sair</Button>}
+
                 </Grid2Customizer>
                 <Grid2Customizer xs={12} md={10}>
                     <FontCustomizer>
