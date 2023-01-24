@@ -6,7 +6,8 @@ import {styled, useTheme} from "@mui/material/styles";
 import {Button, Typography} from "@mui/material";
 import GoogleIcon from '@mui/icons-material/Google';
 import {signIn} from "next-auth/react";
-import { signOut } from "next-auth/react"
+import {signOut} from "next-auth/react"
+import {useRouter} from "next/router";
 
 const Grid2Customizer = styled(Grid2)(({theme}) => ({
     height: "100vh"
@@ -17,32 +18,38 @@ const Grid2Customizer = styled(Grid2)(({theme}) => ({
 }));
 
 const FontCustomizer = styled(Typography)(({theme}) => ({
-   textAlign:"justify",
-    fontSize:"18px",
-    lineHeight:2.2,
-    textIndent:"48px",
-    paddingTop:"16px",
-    paddingRight:"8px"
+    textAlign: "justify",
+    fontSize: "18px",
+    lineHeight: 2.2,
+    textIndent: "48px",
+    paddingTop: "16px",
+    paddingRight: "8px"
 }));
 export default function Page() {
     const theme = useTheme();
+    const router = useRouter();
     // @ts-ignore
     // const backgroundColor = theme.palette.primary[100];
     const backgroundColor = '#ffffff';
     // @ts-ignore
     const backgroundColorHeader = theme.palette.primary[700];
+    const logout = async () => {
+         signOut({redirect: false, callbackUrl: "/login"});
+
+    }
 
     return (
         <LayoutLogin>
             <Container>
                 <Grid2Customizer xs={12} md={2} sx={{backgroundColor: backgroundColor}}>
-                    <Typography variant="h2" color={backgroundColorHeader} sx={{ fontWeight: 'bold', m: 1 }} textAlign="center">Login</Typography>
+                    <Typography variant="h2" color={backgroundColorHeader} sx={{fontWeight: 'bold', m: 1}}
+                                textAlign="center">Login</Typography>
                     <Button fullWidth color="error" size="large"
                             onClick={()=>{signIn('google')}}
                             variant="outlined" startIcon={<GoogleIcon />}>Google</Button>
 
                     <Button fullWidth color="error" size="large"
-                            onClick={()=>{signOut()}}
+                            onClick={logout}
                             variant="outlined">Sair</Button>
                 </Grid2Customizer>
                 <Grid2Customizer xs={12} md={10}>
@@ -91,8 +98,6 @@ export default function Page() {
 
                     </FontCustomizer>
                     <FontCustomizer>
-
-
 
 
                         As experiências acumuladas demonstram que o novo modelo estrutural aqui preconizado prepara-nos
