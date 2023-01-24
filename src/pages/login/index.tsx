@@ -46,7 +46,7 @@ export default function Page() {
                     <Typography variant="h2" color={backgroundColorHeader} sx={{fontWeight: 'bold', m: 1}}
                                 textAlign="center">Login</Typography>
 
-                    {loading && !session && <p>aguarde</p>}
+                    {loading && <p>aguarde</p>}
                     {!session &&  <Button fullWidth color="error" size="large"
                                           onClick={() => {
                                               signIn('google')
