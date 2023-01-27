@@ -7,6 +7,8 @@ import SideBar from "./SideBar";
 import {styled} from '@mui/system';
 import {useRouter} from "next/router";
 import {useSession} from "next-auth/react";
+import {MenuItemJSON} from "@/types/MenuItemTypes";
+import {clientMenu} from "@/clients/clientBackend";
 
 
 const widthNavBarSize = 250;
@@ -26,6 +28,20 @@ interface propsLayout {
 
 
 const LayoutDashboard = (props: propsLayout) => {
+
+    console.log("render layout dashboard");
+    const [itens, setItens] = useState<MenuItemJSON[]>([]);
+
+     useEffect(() => {
+        const loadFetch = async () => {
+            const menuItens = await clientMenu.getAllMenuItemByUser();
+            setItens(menuItens);
+        }
+
+        loadFetch();
+    }, []);
+
+
     const {data: session, status} = useSession()
     const loading = status === "loading"
     const widthNavBarSizePlus = widthNavBarSize + 8;
@@ -63,6 +79,7 @@ const LayoutDashboard = (props: propsLayout) => {
         <Box display={isMobile ? "block" : "flex"} width="100vw" minHeight="100vh" overflow="hidden">
 
             <SideBar
+                itens={itens}
                 isMobile={isMobile}
                 isOpenSideBar={isSideBarOpen}
                 toggleSideBar={setIsSideBarOpen}

@@ -3,6 +3,7 @@ import {Product} from "../types/Product";
 import {VideoType} from "../types/VideoType";
 import {Segmento} from "../types/Segmento";
 import {METHOD} from "../types/MethodHTTP";
+import {MenuItemJSON} from "@/types/MenuItemTypes";
 
 
 // const ENDERECO_BACKEND = process.env.NEXT_PUBLIC_ENDERECO_BACKEND;
@@ -14,7 +15,6 @@ const instance: AxiosInstance = axios.create({
     withCredentials: true
 
 });
-
 
 
 export async function chamarAxios(url: string, metodo_utilizado: string, dados: any): Promise<any> {
@@ -69,5 +69,15 @@ export const clientProducts = {
     }
 }
 
+
+export const clientMenu = {
+    getAllMenuItemByUser: async (): Promise<MenuItemJSON[]> => {
+        const retornoApi = await chamarAxios('/menu', METHOD.GET, {});
+        if (retornoApi.data == undefined) {
+            return [];
+        }
+        return retornoApi.data as MenuItemJSON[];
+    }
+}
 
 
