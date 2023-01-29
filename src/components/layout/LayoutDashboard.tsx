@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import NavBar from "./NavBar";
 import {useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import SideBar from "./SideBar";
 import {styled} from '@mui/system';
-import {useRouter} from "next/router";
 import {useSession} from "next-auth/react";
-import {MenuItemJSON} from "@/types/MenuItemTypes";
-import {clientMenu} from "@/clients/clientBackend";
+import {ColorModeContext} from "../../context/ColorModeContext";
 
 
 const widthNavBarSize = 250;
@@ -29,17 +27,8 @@ interface propsLayout {
 
 const LayoutDashboard = (props: propsLayout) => {
 
+    const {itensMenu} = useContext(ColorModeContext);
     console.log("render layout dashboard");
-    const [itens, setItens] = useState<MenuItemJSON[]>([]);
-
-     useEffect(() => {
-        const loadFetch = async () => {
-            const menuItens = await clientMenu.getAllMenuItemByUser();
-            setItens(menuItens);
-        }
-
-        loadFetch();
-    }, []);
 
 
     const {data: session, status} = useSession()
@@ -79,7 +68,7 @@ const LayoutDashboard = (props: propsLayout) => {
         <Box display={isMobile ? "block" : "flex"} width="100vw" minHeight="100vh" overflow="hidden">
 
             <SideBar
-                itens={itens}
+                itens={itensMenu}
                 isMobile={isMobile}
                 isOpenSideBar={isSideBarOpen}
                 toggleSideBar={setIsSideBarOpen}
