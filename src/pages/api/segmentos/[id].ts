@@ -4,28 +4,24 @@ import {getSession} from "next-auth/react"
 import {withAuthenticatedSession} from '@/core/withAuthenticatedSession'
 import {Segmento} from "@/types/Segmento";
 import {useGetSegmentoByCodigo} from "@/hooks/segmentoHooks";
+import {sleep} from "@/core/Sleep";
 
 export default withAuthenticatedSession(handler)
 
 
-export  async function handler(req: NextApiRequest, res: NextApiResponse<Segmento>) {
-
+export  async function handler(req: NextApiRequest, res: NextApiResponse<Segmento | {}>) {
     const {method} = req;
-    // const session = await getSession({req});
     const {id} = req.query;
     switch (method) {
-
         case 'GET':
-            // const segmentosList = await mongoServiceSegmentos.getAll()
-            const segmentoInstance = {
-                codigo:1,
-                resumo:"resumo slkjseljfs",
-                nome:"Segmento de alguma voisa"
-            } as Segmento;
-            res.status(200).json(segmentoInstance);
-            break
-
-
+            sleep(5000);
+            const segmentoInstance = await mongoServiceSegmentos.getSegmentoByCodigo(Number(id));
+            if(segmentoInstance){
+                res.status(200).json(segmentoInstance);
+                return;
+            }
+            res.status(404).json({});
+            break;
         default:
             res.setHeader('Allow', ['GET'])
             res.status(405).end(`Method ${method} Not Allowed`)

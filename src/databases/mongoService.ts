@@ -52,6 +52,14 @@ export const mongoServiceSegmentos = {
         return segmentosList;
 
 
+    },
+    getSegmentoByCodigo: async (codigo:number): Promise<Segmento | null> => {
+        const {db} = await connectToDatabase();
+        const segmentoColle = await db.collection<Segmento>(segmentoCollection);
+        const segmentoInstance = await segmentoColle.findOne({codigo:codigo});
+        return segmentoInstance;
+
+
     }
 }
 

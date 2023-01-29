@@ -1,14 +1,12 @@
-import React, {useEffect, useRef} from "react";
+import React from "react";
 import {LayoutDashboard} from "@/components/layout";
 import {Header} from "@/components/Header";
 import {Segmento} from "@/types/Segmento";
-import {useGetAllSegmentos} from "@/hooks/segmentoHooks";
+import {useGetAllSegmentos, useGetSegmentoByCodigo} from "@/hooks/segmentoHooks";
 import {Container} from "@/components/Container";
 import {useRouter} from "next/router";
 import {CircularIndeterminate} from "@/components/Progress";
-import FormControl from "@mui/material/FormControl";
 import {TextField} from "@mui/material";
-import Box from "@mui/material/Box";
 import {BotaoVoltar} from "@/components/navegation/BotaoVoltar";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
@@ -24,7 +22,7 @@ const FormularioEdicaoSegmento: React.FC<{ segmento: Segmento }> = ({segmento}) 
             <Grid2 xs={12} md={6} >
                 <TextField variant="outlined" id="codigo" aria-describedby="my-helper-text"
                            label="Código"
-                           defaultValue={segmento.codigo}
+                           value={segmento.codigo}
                            InputProps={{
                                readOnly: true,
                            }}
@@ -36,7 +34,7 @@ const FormularioEdicaoSegmento: React.FC<{ segmento: Segmento }> = ({segmento}) 
             <Grid2 xs={12} md={6} >
                 <TextField variant="outlined" id="codigo" aria-describedby="my-helper-text"
                            label="Código"
-                           defaultValue={segmento.nome}
+                           value={segmento.nome}
                            fullWidth
                     /*inputRef={input => input && input.focus()}*/
                            autoFocus
@@ -46,11 +44,10 @@ const FormularioEdicaoSegmento: React.FC<{ segmento: Segmento }> = ({segmento}) 
             <Grid2 xs={12} md={12} >
                 <TextField variant="outlined" id="codigo" aria-describedby="my-helper-text"
                            label="Código"
-                           defaultValue={segmento.nome}
+                           value={segmento.resumo}
                            fullWidth
                            multiline
                            rows={10}
-                           maxRows={15}
                            helperText="Aqui é o código do Segmento, não é possível atualizar esse campo"/>
 
             </Grid2>
@@ -67,16 +64,8 @@ export default function Page() {
 
     const router = useRouter();
     const {id} = router.query;
-    const idNumber = Number(id);
-    console.log(id, idNumber);
+    const {data, error} = useGetSegmentoByCodigo(Number(id));
 
-
-    const {data, error} = useGetAllSegmentos();
-    const segmento = {
-        codigo: 1,
-        nome: 'segmento',
-        resumo: 'sfsdfdf sadfadfa '
-    } as Segmento;
 
 
     return (
@@ -90,7 +79,7 @@ export default function Page() {
 
                 {error && <div>Failed to load </div>}
                 {!data && <CircularIndeterminate/>}
-                {data && <FormularioEdicaoSegmento segmento={segmento}/>}
+                {data && <FormularioEdicaoSegmento segmento={data}/>}
 
             </Container>
 

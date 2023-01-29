@@ -5,7 +5,7 @@ import {getSession} from "next-auth/react";
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
     const isAuthenticated = session != null;
-    let destination = '/dashboard/loadMenu';
+    let destination = '/dashboard';
     console.log("isAuthenticated ", isAuthenticated)
     if (!isAuthenticated) {
         destination = '/login'

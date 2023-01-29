@@ -4,20 +4,16 @@ import {withAuthenticatedSession} from '@/core/withAuthenticatedSession'
 import {MenuItemJSON} from "@/types/MenuItemTypes";
 
 
-export default withAuthenticatedSession(handler)
+export default withAuthenticatedSession(handler);
 
 
 export async function handler(req: NextApiRequest, res: NextApiResponse<MenuItemJSON[]>) {
-console.log("chamou");
     const {method} = req;
     const session = await getSession({req});
     switch (method) {
-
         case 'GET':
             res.status(200).json(menuList);
-            break
-
-
+            break;
         default:
             res.setHeader('Allow', ['GET'])
             res.status(405).end(`Method ${method} Not Allowed`)

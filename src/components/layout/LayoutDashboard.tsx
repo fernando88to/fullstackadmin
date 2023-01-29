@@ -17,7 +17,7 @@ const ContainerBox = styled(Box)(({theme}) => ({
     marginLeft: "8px",
     marginTop: "65px",
     paddingBottom: "32px",
-    paddingRight:"32px",
+    paddingRight: "32px",
     width: "100%"
 }));
 
@@ -28,7 +28,7 @@ interface propsLayout {
 
 const LayoutDashboard = (props: propsLayout) => {
 
-
+    const {loadItensMenu, itensMenu} = useContext(ColorModeContext);
     console.log("render layout dashboard");
 
 
@@ -49,6 +49,13 @@ const LayoutDashboard = (props: propsLayout) => {
         setPaddingLeftContainer(draftPaddingLeftContainer);
         setpaddingLeftNavBar(draftPaddingLeftNavBar);
     }, [isSideBarOpen]);
+
+    useEffect(() => {
+        if (status !== "loading" && session && itensMenu.length === 0) {
+            console.log('deve atualizar o menu');
+            loadItensMenu();
+        }
+    }, [status]);
 
 
     const widthNavBar = widthNavBarSize + "px";
