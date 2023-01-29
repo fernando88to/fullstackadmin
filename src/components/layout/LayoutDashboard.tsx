@@ -27,7 +27,7 @@ interface propsLayout {
 
 const LayoutDashboard = (props: propsLayout) => {
 
-    const {itensMenu} = useContext(ColorModeContext);
+
     console.log("render layout dashboard");
 
 
@@ -68,7 +68,7 @@ const LayoutDashboard = (props: propsLayout) => {
         <Box display={isMobile ? "block" : "flex"} width="100vw" minHeight="100vh" overflow="hidden">
 
             <SideBar
-                itens={itensMenu}
+
                 isMobile={isMobile}
                 isOpenSideBar={isSideBarOpen}
                 toggleSideBar={setIsSideBarOpen}

@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import {MenuItemJSON} from "@/types/MenuItemTypes";
 import {List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import {ChevronRightOutlined} from "@mui/icons-material";
 import {IconComponent} from "@/components/IconComponent";
 import {useTheme} from "@mui/material/styles";
+import {ColorModeContext} from "../../context/ColorModeContext";
 
 
-export const MenuDashBoard: React.FC<{ itens: MenuItemJSON[] }> = ({itens}) => {
+export const MenuDashBoard: React.FC<{}> = () => {
 
+    console.log("renderizou o menu");
+    const {itensMenu} = useContext(ColorModeContext);
 
     const router = useRouter();
     const theme = useTheme();
@@ -25,8 +28,6 @@ export const MenuDashBoard: React.FC<{ itens: MenuItemJSON[] }> = ({itens}) => {
     const primary600 = theme.palette.primary[600];
 
 
-
-
     const handleClickMenu = (path?: string) => {
         if (!path) {
             router.push("/");
@@ -41,7 +42,7 @@ export const MenuDashBoard: React.FC<{ itens: MenuItemJSON[] }> = ({itens}) => {
 
     return (
         <List>
-            {itens.map((menu: MenuItemJSON) => {
+            {itensMenu.map((menu: MenuItemJSON) => {
                 if (!menu.icon) {
                     return (
                         <Typography key={menu.text} sx={{m: "2.25rem 0 1rem 3rem"}}>

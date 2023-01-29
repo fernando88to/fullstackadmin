@@ -15,7 +15,7 @@ interface Iprops {
     isOpenSideBar: boolean
     toggleSideBar: any
     widthNavBar: string
-    itens: MenuItemJSON[]
+
 }
 
 const SideBar = (props: Iprops) => {
@@ -91,7 +91,7 @@ const SideBar = (props: Iprops) => {
                     <Divider/>
                 </Box>
 
-                <MenuDashBoard itens={props.itens}/>
+                <MenuDashBoard/>
 
 
             </Box>
