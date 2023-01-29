@@ -18,6 +18,7 @@ interface INavBar {
 }
 
 const NavBar = (props: INavBar) => {
+    console.log("renderizou a top bar");
     const theme = useTheme();
     const {toggleColorMode} = useContext(ColorModeContext);
     // @ts-ignore
