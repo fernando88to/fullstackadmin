@@ -1,38 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {LayoutDashboard} from "@/components/layout";
 import {Header} from "@/components/Header";
 import {Segmento} from "@/types/Segmento";
 import {useGetAllSegmentos} from "@/hooks/segmentoHooks";
-import {CircularIndeterminate} from "@/components/Progress";
-import Grid2 from "@mui/material/Unstable_Grid2";
-import {CardItem} from "@/components/CardItem";
 import {Container} from "@/components/Container";
+import {useRouter} from "next/router";
+import {clientBackend} from "@/clients/clientBackend";
+import {CircularIndeterminate} from "@/components/Progress";
 
 
 type Props = {
     data: Segmento[]
 };
 
-const ListSegmento: React.FC<Props> = (props) => {
-    return (
-        <>
-            {props.data.map(segmento => {
-            return (
-                <Grid2 key={segmento.codigo} xs={12} sm={4}>
-                    <CardItem title={segmento.nome} text={segmento.resumo}
-                                url='/dashboard/segmentos/edit/'
-                              keyItem={segmento.codigo}/>
-                </Grid2>
-            );
-        })}
-        </>
-    );
-}
-
 
 export default function Page() {
 
+    const router = useRouter();
+    const { id } = router.query;
+
+
+
     const {data, error} = useGetAllSegmentos();
+
 
 
     return (
@@ -42,7 +32,8 @@ export default function Page() {
             <Container>
                 {error && <div>Failed to load </div>}
                 {!data && <CircularIndeterminate/>}
-                {data && <ListSegmento data={data}/>}
+                {data && <p>carregou {id}</p>}
+
             </Container>
 
 
