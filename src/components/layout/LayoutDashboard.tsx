@@ -17,6 +17,7 @@ const ContainerBox = styled(Box)(({theme}) => ({
     marginLeft: "8px",
     marginTop: "65px",
     paddingBottom: "32px",
+    paddingRight:"32px",
     width: "100%"
 }));
 

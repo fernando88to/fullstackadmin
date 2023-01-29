@@ -3,6 +3,7 @@ import {useTheme} from "@mui/material/styles";
 import {Card, CardActions, CardContent, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useRouter} from "next/router";
+import SearchIcon from '@mui/icons-material/Search';
 
 export const CardItem: React.FC<{ title: string, text: string, keyItem: number, url?:string }> = (props) => {
     const theme = useTheme();
@@ -21,10 +22,11 @@ export const CardItem: React.FC<{ title: string, text: string, keyItem: number, 
         <Card
             sx={{
                 backgroundImage: "none", backgroundColor: backgroundAltColor,
-                borderRadius: "0.55rem", minHeight: "100%"
+                borderRadius: "0.55rem", minHeight: "100%",
+                display:"flex", justifyContent:'space-between', flexDirection:'column'
 
             }}>
-            <CardContent>
+            <CardContent >
                 <Typography
                     variant="h2"
                     sx={{fontSize: 24}}
@@ -38,8 +40,10 @@ export const CardItem: React.FC<{ title: string, text: string, keyItem: number, 
                     {props.text}
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small" onClick={redirecionar}>editar</Button>
+            <CardActions style={{display:"flex", alignSelf:'flex-end'}}>
+                <Button variant="contained"
+                        startIcon={<SearchIcon />}
+                        onClick={redirecionar}>editar</Button>
             </CardActions>
 
 
