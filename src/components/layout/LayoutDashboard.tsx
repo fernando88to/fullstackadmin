@@ -22,7 +22,8 @@ const ContainerBox = styled(Box)(({theme}) => ({
 }));
 
 interface propsLayout {
-    children: React.ReactNode
+    children: React.ReactNode,
+    itemMenuSelected:number
 }
 
 
@@ -76,7 +77,7 @@ const LayoutDashboard = (props: propsLayout) => {
         <Box display={isMobile ? "block" : "flex"} width="100vw" minHeight="100vh" overflow="hidden">
 
             <SideBar
-
+                itemMenuSeleted={props.itemMenuSelected}
                 isMobile={isMobile}
                 isOpenSideBar={isSideBarOpen}
                 toggleSideBar={setIsSideBarOpen}

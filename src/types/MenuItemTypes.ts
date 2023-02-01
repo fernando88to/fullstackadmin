@@ -12,4 +12,5 @@ export interface MenuItemJSON {
     icon?: keyof typeof MuiIcon | null;
     text: string;
     path?: string
+    keyItem:number
 }

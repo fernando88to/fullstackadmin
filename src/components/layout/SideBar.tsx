@@ -15,6 +15,7 @@ interface Iprops {
     isOpenSideBar: boolean
     toggleSideBar: any
     widthNavBar: string
+    itemMenuSeleted: number
 
 }
 
@@ -91,7 +92,7 @@ const SideBar = (props: Iprops) => {
                     <Divider/>
                 </Box>
 
-                <MenuDashBoard/>
+                <MenuDashBoard itemMenuSeleted={props.itemMenuSeleted}/>
 
 
             </Box>

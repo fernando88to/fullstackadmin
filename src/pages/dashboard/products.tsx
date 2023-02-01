@@ -110,7 +110,7 @@ export default function Page() {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={4}>
             <Header title="PRODUCTS" subTitle="See your list of products"/>
             {isLoading ? <CircularIndeterminate /> : <ListVideo data={data}/>}
         </LayoutDashboard>

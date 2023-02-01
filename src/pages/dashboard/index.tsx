@@ -5,7 +5,7 @@ export default function IndexPage() {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={1}>
             <p>Pagina 1</p>
         </LayoutDashboard>
     );

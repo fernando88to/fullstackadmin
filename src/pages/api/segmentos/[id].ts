@@ -14,7 +14,6 @@ export  async function handler(req: NextApiRequest, res: NextApiResponse<Segment
     const {id} = req.query;
     switch (method) {
         case 'GET':
-            sleep(5000);
             const segmentoInstance = await mongoServiceSegmentos.getSegmentoByCodigo(Number(id));
             if(segmentoInstance){
                 res.status(200).json(segmentoInstance);

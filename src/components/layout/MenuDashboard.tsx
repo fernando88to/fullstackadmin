@@ -8,7 +8,7 @@ import {useTheme} from "@mui/material/styles";
 import {ColorModeContext} from "../../context/ColorModeContext";
 
 
-export const MenuDashBoard: React.FC<{}> = () => {
+export const MenuDashBoard: React.FC<{ itemMenuSeleted: number }> = ({itemMenuSeleted}) => {
 
     console.log("renderizou o menu");
     const {itensMenu} = useContext(ColorModeContext);
@@ -36,8 +36,8 @@ export const MenuDashBoard: React.FC<{}> = () => {
         router.push(path);
     }
 
-    const isSelected = (path?: string) => {
-        return router.pathname === path;
+    const isSelected = (menu:MenuItemJSON) => {
+        return itemMenuSeleted === menu.keyItem;
     }
 
     return (
@@ -45,31 +45,31 @@ export const MenuDashBoard: React.FC<{}> = () => {
             {itensMenu.map((menu: MenuItemJSON) => {
                 if (!menu.icon) {
                     return (
-                        <Typography key={menu.text} sx={{m: "2.25rem 0 1rem 3rem"}}>
+                        <Typography key={menu.keyItem} sx={{m: "2.25rem 0 1rem 3rem"}}>
                             {menu.text}
                         </Typography>
                     );
                 }
 
                 return (
-                    <ListItem key={menu.text} disablePadding>
+                    <ListItem key={menu.keyItem} disablePadding>
                         <ListItemButton
                             onClick={() => {
                                 handleClickMenu(menu.path)
                             }}
                             sx={{
-                                backgroundColor: isSelected(menu.path) ? secondary300 : "transparent",
-                                color: isSelected(menu.path) ? secondary600 : secondary100,
+                                backgroundColor: isSelected(menu) ? secondary300 : "transparent",
+                                color: isSelected(menu) ? secondary600 : secondary100,
                             }}>
                             <ListItemIcon
                                 sx={{
                                     ml: "2rem",
-                                    color: isSelected(menu.path) ? primary600 : secondary200,
+                                    color: isSelected(menu) ? primary600 : secondary200,
                                 }}>
                                 <IconComponent icon={menu.icon}/>
                             </ListItemIcon>
                             <ListItemText primary={menu.text}/>
-                            {isSelected(menu.path) && (
+                            {isSelected(menu) && (
                                 <ChevronRightOutlined sx={{ml: "auto"}}/>
                             )}
                         </ListItemButton>

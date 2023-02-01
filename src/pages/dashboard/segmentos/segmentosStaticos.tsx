@@ -41,7 +41,7 @@ export default function Page(props:Props) {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={10}>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
              <ListSegmento data={props.data}></ListSegmento>

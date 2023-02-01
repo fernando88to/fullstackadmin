@@ -31,7 +31,7 @@ export default function Page() {
         dataFetch();
     }, [])
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={9}>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
             {loading ? <CircularIndeterminate/> : <ListSegmento data={data}></ListSegmento>}

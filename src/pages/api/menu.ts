@@ -22,38 +22,22 @@ export async function handler(req: NextApiRequest, res: NextApiResponse<MenuItem
 }
 
 
-
 export const menuList: MenuItemJSON[] = [
-    {text: "Dashboard", icon: "HomeOutlined", path: "/dashboard"},
-    {text: "Client Facing", icon: null, active: false},
-    {text: "Pagina 2", icon: "ShoppingCartOutlined", active: false, path: "/dashboard/pagina2"},
-    {text: "Products", icon: "ShoppingCartOutlined", active: false, path: "/dashboard/products"},
-    {
-        text: "Products with swr",
-        icon: "Groups2Outlined",
-        active: false,
-        path: "/dashboard/products2"
-    },
-    {
-        text: "Transactions",
-        icon: "ReceiptLongOutlined",
-        active: false,
-        path: "/dashboard/pagina4"
-    },
-    {text: "Geography", icon: "PublicOutlined", active: false, path: "/dashboard/pagina5"},
-    {text: "Cadastro", icon: null, active: false, path: "/dashboard/pagina2"},
-    {text: "Segmentos", icon: "DragIndicator", active: false, path: "/dashboard/segmentos"},
-    {
-        text: "Segmentos (statico)",
-        icon: "DragIndicator",
-        active: false,
-        path: "/dashboard/segmentos/segmentosStaticos"
-    },
+    {text: "Início", icon: "HomeOutlined", path: "/dashboard", keyItem: 1},
+    {text: "Client Facing", icon: null, active: false, keyItem: 2},
+    {text: "Pagina 2", icon: "ShoppingCartOutlined", active: false, path: "/dashboard/pagina2", keyItem: 3},
+    {text: "Products", icon: "ShoppingCartOutlined", active: false, path: "/dashboard/products", keyItem: 4},
+
+
+    {text: "Geography", icon: "PublicOutlined", active: false, path: "/dashboard/pagina5", keyItem: 7},
+    {text: "Cadastro", icon: null, active: false, path: "/dashboard/pagina2", keyItem: 8},
+    {text: "Segmentos", icon: "DragIndicator", active: false, path: "/dashboard/segmentos", keyItem: 9},
     {
         text: "Segmentos (swr)",
         icon: "DragIndicator",
         active: false,
-        path: "/dashboard/segmentos/segmentosSwr"
+        path: "/dashboard/segmentos/segmentosSwr",
+        keyItem: 11
     },
     // {text: "Daily", icon: "TodayOutlined", active: false, path: "/pagina7"},
     /* {text: "Monthly", icon: <CalendarMonthOutlined/>, active: false, path: "/pagina8"},

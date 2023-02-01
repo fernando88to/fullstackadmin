@@ -36,7 +36,7 @@ export default function Page() {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={11}>
             <Header title="Segmentos" subTitle="Segue abaixo os segmentos dos cartórios extra judiciais juntamente
             com um resumo"/>
             <Container>
