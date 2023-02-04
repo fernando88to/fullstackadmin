@@ -1,0 +1,11 @@
+### Send POST request with json body
+PUT http://localhost:3000/api/segmentos/12
+Content-Type: application/json
+Cookie: __Secure-next-auth.session-token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..d3iVk3Oo3y7kiXeu.p2-PLDm1Ni55eYSZD386nrHz5e96BMtDwWS8c6W6Kv3ZWelTXP2hhcDl-LnVMxIBLtVOzMtKsPHSx0cdQq2XdciEfLpkZ1hVfQ3QylZNJG1n5saGJWdVH4qapnHKyGr82fDer79f7ZJvIt7wgOWguZgNM8xskbNDYrVY8mVP7OnbM-y3AAq7FDmCNA6TZzzPPQ7dAjoIyTK_3hF-0ep8rz9XySCEXmPResjS__3GoHffE48DUsjf8Pmw3TGUkj4yJEt2eSwzXvXO98Sa_Y-Ee9-QXkDeqZQBulSsthbR8TACBJVGSHNn7oBJW575Oq-1UCipf9UJ5G4ak8C-z5726c7PGNeLK5sFrtMZ45JRWw.Y7ff1oUMQRgsFF6zA6c3BQ; __Secure-next-auth.callback-url=%2Fdashboard; __Host-next-auth.csrf-token=f59be29ff979d735e9c86267edb5ca5206aa852de15884840d55274ddc53b116%7Cc8f63525de498bd477e0da3a8d221471010a04dfae73bde0358995bc37ad9818
+
+{
+  "nome": "TESTE",
+  "codigo": 1,
+  "description": "Hilux SRV 4x4 3.0 CD Diesel 2015",
+  "resumo": "Hilux SRV 4x4 3.0 CD Diesel 2015"
+}
