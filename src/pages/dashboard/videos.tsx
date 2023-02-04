@@ -48,7 +48,7 @@ export default function Page() {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={1}>
             <p>
                 {isLoading ? <p>carregando </p> : <ListVideo data={data}/>}
             </p>

@@ -23,7 +23,7 @@ export default function Page({videosList}: Iprops) {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={1}>
             <p>
                 {videosList.length}
             </p>

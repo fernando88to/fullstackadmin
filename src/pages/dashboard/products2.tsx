@@ -11,7 +11,7 @@ export default function Page() {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={1}>
             {error && <div>Failed to load </div>  }
             {!data && <div>Loading...</div>  }
             {data && <div>Carregou</div>  }

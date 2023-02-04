@@ -7,7 +7,7 @@ export default function About() {
 
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard itemMenuSelected={1}>
             <p>
                 Pagina Dois
             </p>
