@@ -45,3 +45,11 @@ npm i --save @emotion/cache @emotion/react @emotion/server @emotion/styled @mui/
 ### Exemplo com next auth
 
 https://github.com/nextauthjs/next-auth-example/blob/main/components/header.tsx
+
+### Documentação de como configurar o test  unitários
+
+* https://nextjs.org/docs/testing#jest-and-react-testing-library
+
+Projeto de exemplo de next com jest 
+
+* https://github.com/fernando88to/next-tdd/

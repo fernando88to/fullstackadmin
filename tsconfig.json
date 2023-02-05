@@ -22,6 +22,7 @@
       "@/types/*": ["types/*"],
       "@/core/*": ["core/*"],
       "@/databases/*": ["databases/*"],
+      "@/services/*": ["services/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
