@@ -1,4 +1,5 @@
 import {Segmento} from "@/types/Segmento";
+import {mongoServiceSegmentos} from "@/databases/mongoService";
 
 export const segmentoService = {
     update: (segmento: Segmento): boolean => {
@@ -18,5 +19,8 @@ export const segmentoService = {
         if (!segmento.resumo) {
             segmento.errosList.push({attribute: 'nome', errorMessage: 'Informe o campo resumo'});
         }
+    },
+    list: async (): Promise<Segmento[]> => {
+        return await mongoServiceSegmentos.getAll();
     }
 }

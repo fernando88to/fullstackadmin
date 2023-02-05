@@ -30,9 +30,13 @@ const customJestConfig = {
         '^@/services/(.*)$': '<rootDir>/src/services/$1',
     },
     testEnvironment: 'jest-environment-jsdom',
+    //estava dando um pau, tive que colocar essa configuração
+    setupFiles: [`<rootDir>/jest-shim.js`],
+    // testEnvironment: 'node',
     // dessa forma não precisa criar o diretorio __tests__ na raiz, os testes podem ficar juntos
     // do código fonte, as devem terminar com as configurações abaixo
-    testMatch: ['<rootDir>/src/**/*.test.ts','<rootDir>/src/**/*.test.tsx'],
+    testMatch: ['<rootDir>/src/**/*.test.ts', '<rootDir>/src/**/*.test.tsx'],
+
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

@@ -4,6 +4,9 @@ import {Segmento} from "@/types/Segmento";
 
 describe('Validacao', () => {
     it('Quando os campos são vazios deve retornar um objeto com os erros', () => {
+
+
+
         let segmento: Segmento = {nome: '', resumo: '', codigo: 1};
         segmentoService.validate(segmento);
         expect(2).toBe(segmento.errosList?.length);
@@ -28,4 +31,17 @@ describe('Atualização de um registro', () => {
         let retorno: boolean = segmentoService.update(segmento);
         expect(retorno).toBe(false);
     })
+});
+
+describe('Pesquisa', () => {
+    it('quando pesquisar', async() => {
+        segmentoService.list = jest.fn().mockImplementation(  () => {
+            let segmentoList: Segmento[] = [];
+            segmentoList.push({codigo: 1, resumo: 'resumo', nome: 'nome'});
+            return segmentoList;
+        });
+        let retorno: Segmento[] = await segmentoService.list();
+        expect(retorno.length).toBe(1);
+    });
+
 });
