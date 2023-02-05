@@ -1,8 +1,13 @@
 import {Segmento} from "@/types/Segmento";
 
 export const segmentoService = {
-    update: (segmento: Segmento) => {
-
+    update: (segmento: Segmento): boolean => {
+        segmentoService.validate(segmento);
+        //check se o array não está vazio
+        if (segmento.errosList?.length) {
+            return false;
+        }
+        return true;
     },
 
     validate: (segmento: Segmento) => {
