@@ -16,6 +16,11 @@ interface RetornoClientMongo {
     db: Db
 }
 
+
+export async function closeConnection(){
+    await cachedClient.close();
+
+}
 export default async function connectToDatabase(): Promise<RetornoClientMongo> {
     if (!MONGO_USERNAME) {
         throw new Error('Please define the MONGO_USERNAME enviroment variable inside .env.local');
