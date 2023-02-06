@@ -30,18 +30,32 @@ describe('Atualização de um registro', () => {
         let segmento: Segmento = {codigo: 1, resumo: '', nome: 'Fernando'};
         let retorno: boolean = segmentoService.update(segmento);
         expect(retorno).toBe(false);
-    })
+    });
 });
 
-describe('Pesquisa', () => {
-    it('quando pesquisar', async() => {
+describe('Segmento', () => {
+    it('quando tiver registros deve retornar todos os registros', async() => {
+        let item1 = {codigo: 1, resumo: 'resumo', nome: 'nome'};
+        let item2 = {codigo: 2, resumo: 'resumo2', nome: 'nome2'};
         segmentoService.list = jest.fn().mockImplementation(  () => {
             let segmentoList: Segmento[] = [];
-            segmentoList.push({codigo: 1, resumo: 'resumo', nome: 'nome'});
+            segmentoList.push(item1);
+            segmentoList.push(item2);
             return segmentoList;
         });
         let retorno: Segmento[] = await segmentoService.list();
-        expect(retorno.length).toBe(1);
+        expect(retorno.length).toBe(2);
+        expect(retorno[0]).toBe(item1);
+        expect(retorno[1]).toBe(item2);
+    });
+
+    it('quando tiver não tiver registros dever retonar um array vazio', async() => {
+        segmentoService.list = jest.fn().mockImplementation(  () => {
+            return [];
+        });
+        let retorno: Segmento[] = await segmentoService.list();
+        expect(retorno.length).toBe(0);
+
     });
 
 });
