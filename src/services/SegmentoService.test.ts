@@ -58,4 +58,24 @@ describe('Segmento', () => {
 
     });
 
+    it('quando pesquisar por um registro deve retonar um registro', async() => {
+        let item1 = {codigo: 1, resumo: 'resumo', nome: 'nome'};
+        segmentoService.getSegmentoByCodigo = jest.fn().mockImplementation(  () => {
+            return item1;
+        });
+        let retorno = await segmentoService.getSegmentoByCodigo(1);
+        expect(retorno).toBe(item1);
+
+    });
+
+    it('quando pesquisar por um registro qua não exite deve retonar nulo', async() => {
+        // let item1 = {codigo: 1, resumo: 'resumo', nome: 'nome'};
+        segmentoService.getSegmentoByCodigo = jest.fn().mockImplementation(  () => {
+            return null;
+        });
+        let retorno = await segmentoService.getSegmentoByCodigo(1);
+        expect(retorno).toBeNull();
+
+    });
+
 });

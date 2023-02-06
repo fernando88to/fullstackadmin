@@ -22,5 +22,8 @@ export const segmentoService = {
     },
     list: async (): Promise<Segmento[]> => {
         return await mongoServiceSegmentos.getAll();
+    },
+    getSegmentoByCodigo: async (codigo: number): Promise<Segmento | null> => {
+        return await mongoServiceSegmentos.getSegmentoByCodigo(codigo);
     }
 }
